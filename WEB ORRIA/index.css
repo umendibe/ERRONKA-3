@@ -1,0 +1,26 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    display: flex;
+
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.titulua {
+    margin-right: 150px;
+    letter-spacing: 12px;
+}
+.nabigazioElementuak {
+    display: flex;
+}
+
+.nabigazioElementuak > p {
+    margin-right: 50px;
+}
