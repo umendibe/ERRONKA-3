@@ -47,15 +47,39 @@
     gap: 30px;
     width: 450px;
     margin-left: 0px;
+   
 
+}
+.seguimenduaKontainer {
+
+    width: 400px;
+ 
 
 }
 
-.seguimenduaKontainer{
+.seguimenduaKontainer input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+
+}
+
+.seguimenduaKontainer button {
+
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(233, 229, 224);
+}
 
 
-
-
-
-    
+.seguimenduaKontainer h2 {
+    margin-bottom: 20px;
+}
+.seguimenduaKontainer form {
+    display: flex;
+    flex-direction: column;
 }

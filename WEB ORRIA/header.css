@@ -1,11 +1,9 @@
 /* 2. Header (Menu de navegación) */
 header {
     padding: 20px 50px;
-    border-bottom: 1px solid #eee;
-    position: sticky;
-    top: 0;
-    background: white;
-    z-index: 100;
+    border-bottom: 1px solid #eee;;
+    color: black;
+    border-bottom: 1px solid #000000;
 }
 
 nav {
