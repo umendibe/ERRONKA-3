@@ -5,3 +5,56 @@ footer {
     color: white;
     font-size: 0.9rem;
 }
+
+#footer1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+#footer1  .laguntza {
+
+    list-style-type: none;
+    text-align: left;
+    margin-left: 0;
+    justify-content: center;
+
+}
+
+
+#footer1  .informazioa {
+
+   list-style-type: none;   
+    justify-content: center;
+
+
+}
+
+
+#footer1>ul+li {
+
+    color: blue;
+
+}
+
+#footer1>ul>li {
+
+    margin-top: 30px;
+
+}
+
+
+
+footer #footer2 {
+
+    border-top: solid white 1px;
+
+}
+
+#footer2 p {
+    margin-top: 50px;
+
+
+}
