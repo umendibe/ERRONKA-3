@@ -88,10 +88,13 @@ main {
     margin-top: 40px;
 }
 
-.placeholder2 img {
-    width: 50%;
+
+.placeholder2 img  {
+    width: 100%;
     height: 750px;
-    object-fit: cover;
+    border-radius: 4px;
+   
+  
 }
 
 /* Animaciones */
@@ -164,11 +167,11 @@ main {
         font-size: 2rem;
     }
 
-    .placeholder-img img {
+    .placeholder-img img  {
         height: auto;
     }
 
-    .placeholder2 img {
+    .placeholder2 img a {
         height: auto;
     }
 

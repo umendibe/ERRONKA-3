@@ -22,7 +22,7 @@ footer {
     
 }
 
-#footer1  .laguntza a{
+#footer1  .laguntza li a{
 
    color: white;
    text-decoration: none;
@@ -30,13 +30,17 @@ footer {
 }
 
 
+.informazioa {
 
+    list-style-type: none;
+  
+}
  
 
-#footer1 .informazioa a{
+#footer1 .informazioa li a{
 
   text-decoration: none;
-  color: white;
+     color: white;
     list-style-type: none;
 }
 
