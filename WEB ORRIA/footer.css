@@ -16,12 +16,21 @@ footer {
 
 #footer1  .laguntza {
 
+   
     list-style-type: none;
     text-align: left;
     margin-left: 0;
     justify-content: center;
 
 }
+
+#footer1  .laguntza a{
+
+   color: white;
+   text-decoration: none;
+
+}
+
 
 
 #footer1  .informazioa {
