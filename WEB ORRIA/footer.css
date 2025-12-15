@@ -15,16 +15,23 @@ footer {
 
 #footer1 .laguntza {
 
+   
     list-style-type: none;
     margin-left: 0;
     justify-content: center;
     
 }
 
-#footer1 .informazioa li{
+#footer1  .laguntza a{
 
-    list-style-type: none;
+   color: white;
+   text-decoration: none;
+
 }
+
+
+
+ 
 
 #footer1 .informazioa a{
 
