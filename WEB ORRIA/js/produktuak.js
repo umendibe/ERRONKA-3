@@ -71,35 +71,35 @@ const arropa = [
 
     {
         izena: "jaka1",
-        prezioa: 25,
+        prezioa: 60,
         img: "img/Produktuak/jaka1.png",
         kategoria: "jakak"
     },
 
     {
         izena: "Jaka ",
-        prezioa: 25,
+        prezioa: 60,
         img: "img/Produktuak/jaka2.png",
         kategoria: "jakak"
     },
 
     {
         izena: "jaka3",
-        prezioa: 25,
+        prezioa: 60,
         img: "img/Produktuak/jaka3.png",
         kategoria: "jakak"
     },
 
     {
         izena: "Kuerozko jaka beltza",
-        prezioa: 25,
+        prezioa: 60,
         img: "img/Produktuak/jaka4.png",
         kategoria: "jakak"
     },
 
     {
         izena: "Kuerozko jaka marroia",
-        prezioa: 25,
+        prezioa: 60,
         img: "img/Produktuak/jaka5.png",
         kategoria: "jakak"
     },
