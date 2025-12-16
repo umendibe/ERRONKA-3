@@ -1,69 +1,69 @@
 const arropa = [
     {
-        izena: "kamiseta1",
+        izena: "Kamiseta beltza",
         prezioa: 10,
         img: "img/Produktuak/kamiseta1.png",
         kategoria: "kamisetak"
     },
 
     {
-        izena: "kamiseta2",
+        izena: "Kamiseta txuria",
         prezioa: 10,
         img: "img/Produktuak/kamiseta2.png",
         kategoria: "kamisetak"
     },
 
     {
-        izena: "kamiseta3",
+        izena: "Kamiseta gorria",
         prezioa: 10,
         img: "img/Produktuak/kamiseta3.png",
         kategoria: "kamisetak"
     },
 
     {
-        izena: "kamiseta4",
+        izena: "Kamiseta urdina",
         prezioa: 10,
         img: "img/Produktuak/kamiseta4.png",
         kategoria: "kamisetak"
     },
 
     {
-        izena: "kamiseta5",
+        izena: "Kamiseta marroia",
         prezioa: 10,
         img: "img/Produktuak/kamiseta5.png",
         kategoria: "kamisetak"
     },
 
     {
-        izena: "prakak1",
+        izena: "Bakero urdinak",
         prezioa: 35,
         img: "img/Produktuak/prakak1.png",
         kategoria: "prakak"
     },
 
     {
-        izena: "prakak2",
+        izena: "Txandal beltza",
         prezioa: 35,
         img: "img/Produktuak/prakak2.png",
         kategoria: "prakak"
     },
 
     {
-        izena: "prakak3",
+        izena: "Bakero grisak",
         prezioa: 35,
         img: "img/Produktuak/prakak3.png",
         kategoria: "prakak"
     },
 
     {
-        izena: "prakak4",
+        izena: "Kargo beige",
         prezioa: 35,
         img: "img/Produktuak/prakak4.png",
         kategoria: "prakak"
     },
 
     {
-        izena: "prakak5",
+        izena: "Bakero urdin argia",
         prezioa: 35,
         img: "img/Produktuak/prakak5.png",
         kategoria: "prakak"
@@ -77,7 +77,7 @@ const arropa = [
     },
 
     {
-        izena: "jaka2",
+        izena: "Jaka ",
         prezioa: 25,
         img: "img/Produktuak/jaka2.png",
         kategoria: "jakak"
@@ -91,84 +91,84 @@ const arropa = [
     },
 
     {
-        izena: "jaka4",
+        izena: "Kuerozko jaka beltza",
         prezioa: 25,
         img: "img/Produktuak/jaka4.png",
         kategoria: "jakak"
     },
 
     {
-        izena: "jaka5",
+        izena: "Kuerozko jaka marroia",
         prezioa: 25,
         img: "img/Produktuak/jaka5.png",
         kategoria: "jakak"
     },
 
     {
-        izena: "alkandora1",
+        izena: "Alkandora urdin argia",
         prezioa: 25,
         img: "img/Produktuak/alkandora1.png",
         kategoria: "alkandorak"
     },
 
     {
-        izena: "alkandora2",
+        izena: "Koadrozko alkandora",
         prezioa: 25,
         img: "img/Produktuak/alkandora2.png",
         kategoria: "alkandorak"
     },
 
     {
-        izena: "alkandora3",
+        izena: "Alkandora berdea",
         prezioa: 25,
         img: "img/Produktuak/alkandora3.png",
         kategoria: "alkandorak"
     },
 
     {
-        izena: "alkandora4",
+        izena: "Alkandora urdin iluna",
         prezioa: 25,
         img: "img/Produktuak/alkandora4.png",
         kategoria: "alkandorak"
     },
 
     {
-        izena: "alkandora5",
+        izena: "Alkandora urdina",
         prezioa: 25,
         img: "img/Produktuak/alkandora5.png",
         kategoria: "alkandorak"
     },
 
     {
-        izena: "sudadera1",
+        izena: "Sudadera txuria",
         prezioa: 25,
         img: "img/Produktuak/sudadera1.png",
         kategoria: "sudaderak"
     },
 
     {
-        izena: "sudadera2",
+        izena: "Sudadera beltza",
         prezioa: 25,
         img: "img/Produktuak/sudadera2.png",
         kategoria: "sudaderak"
     },
 
     {
-        izena: "sudadera3",
+        izena: "Sudadera grisa",
         prezioa: 25,
         img: "img/Produktuak/sudadera3.png",
         kategoria: "sudaderak"
     },
 
     {
-        izena: "sudadera4",
+        izena: "Sudadera urdina",
         prezioa: 25,
         img: "img/Produktuak/sudadera4.png",
         kategoria: "sudaderak"
     },
 
     {
-        izena: "sudadera5",
+        izena: "Sudadera oria",
         prezioa: 25,
         img: "img/Produktuak/sudadera5.png",
         kategoria: "sudaderak"

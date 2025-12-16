@@ -81,6 +81,26 @@ html {
     
 }
 
+#goraBueltatu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.296);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+#goraBueltatu:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
 #kontenidoa {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
