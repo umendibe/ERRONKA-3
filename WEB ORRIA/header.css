@@ -22,7 +22,7 @@ nav {
 }
 
 .nav-logo img {
-   width: 150px;
+    width: 150px;
     height: 150px;
 }
 
@@ -30,4 +30,12 @@ nav ul {
     display: flex;
     list-style: none;
     gap: 30px;
+}
+
+nav li {
+    transition: transform 0.3s ease;
+}
+
+nav li:hover {
+    transform: scale(1.1);
 }

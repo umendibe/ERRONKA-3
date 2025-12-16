@@ -181,12 +181,12 @@ const produktuakBistaratu = (bistaratzekoProduktuak) => {
     kontenidoa.innerHTML = ""
     bistaratzekoProduktuak.forEach(produktua => {
         const div = document.createElement("div")
-        div.className = "produktuak"
+        div.className = "produktua"
         div.innerHTML = `
       <img src="${produktua.img}" alt="produktuArgazkia">
       <h3>${produktua.izena}</h3>
       <p class="Prezioa"> $ ${produktua.prezioa}</p>
-      <button>Karritora gehitu</button>
+      <button>Karritora gehitu<img src="img/carro.png"></button>
     `
     kontenidoa.append(div)
     });
