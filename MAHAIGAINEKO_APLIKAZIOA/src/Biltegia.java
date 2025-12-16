@@ -31,7 +31,7 @@ public class Biltegia {
 
         // Gelaxkaren kapazitate totala kalkulatu
         int gelaxkaKapazitatea = kalkulatuGelaxkaKapazitatea(gelaxkaID);
-        
+
         // Egiazta gelaxka kapazitate limitea gainditu ez duen
         if (gelaxkaKapazitatea + kantitatea > 100) {
             System.out.println("Errorea: Gelaxka " + gelaxkaID + " -en kapazitate limitea gainditu daiteke.");
@@ -75,6 +75,11 @@ public class Biltegia {
                     item.setKantitatea(item.getKantitatea() - kantitatea);
                     if (item.getKantitatea() < 100 && gelaxkaBetetaLista.contains(gelaxkaID)) {
                         gelaxkaBetetaLista.remove(gelaxkaID);
+                        if (item.getKantitatea() == 0) {
+                            System.out.println("Abisua: Gelaxka " + gelaxkaID + " hutsik dago.");
+                            kenduGelaxkaHutsik(gelaxkaID);
+                            return true;
+                        }
                         System.out.println("Abisua: Gelaxka " + gelaxkaID + " 'beteta' egoeratik atera da.");
                     }
                     return true;
@@ -94,10 +99,11 @@ public class Biltegia {
 
         // Helmugako gelaxkaren kapazitate totala kalkulatu
         int helmugaKapazitatea = kalkulatuGelaxkaKapazitatea(helmugaGelaxkaID);
-        
+
         // Egiazta helmugako gelaxka kapazitate limitea gainditu ez duen
         if (helmugaKapazitatea + kantitatea > 100) {
-            System.out.println("Errorea: Helmugako gelaxka " + helmugaGelaxkaID + " -en kapazitate limitea gainditu daiteke.");
+            System.out.println(
+                    "Errorea: Helmugako gelaxka " + helmugaGelaxkaID + " -en kapazitate limitea gainditu daiteke.");
             System.out.println("Unean: " + helmugaKapazitatea + " produktu, gehitu nahi: " + kantitatea);
             System.out.println("Gehienez: " + (100 - helmugaKapazitatea) + " produktu mugitu daitezke.");
             return false;
@@ -157,13 +163,13 @@ public class Biltegia {
 
         // Gelaxka bakarraren arabera taldekatzea
         java.util.Map<String, List<GelaxkaStock>> gelaxkaMap = new java.util.LinkedHashMap<>();
-        
+
         for (GelaxkaStock item : stocka) {
             gelaxkaMap.computeIfAbsent(item.getGelaxkaID(), k -> new ArrayList<>()).add(item);
         }
 
         int totalProduktua = 0;
-        
+
         // Gelaxka bakoitzaren informazioa erakutsi
         for (String gelaxkaID : gelaxkaMap.keySet()) {
             List<GelaxkaStock> gelaxkaProduktua = gelaxkaMap.get(gelaxkaID);
@@ -179,10 +185,10 @@ public class Biltegia {
                 // Produktuaren izena bilatu
                 Produktua prod = billatuProduktua(item.getProduktuEAN13());
                 String produktuIzena = prod != null ? prod.getIzena() : "Ezezaguna";
-                
-                System.out.println("  - " + produktuIzena + 
-                                 " [EAN: " + item.getProduktuEAN13() + "]" +
-                                 " | Kantitatea: " + item.getKantitatea());
+
+                System.out.println("  - " + produktuIzena +
+                        " [EAN: " + item.getProduktuEAN13() + "]" +
+                        " | Kantitatea: " + item.getKantitatea());
                 totalProduktua += item.getKantitatea();
             }
         }
@@ -202,18 +208,23 @@ public class Biltegia {
         return null;
     }
 
+    // Gelaxka hutsik badago, stocketik kendu
+    private void kenduGelaxkaHutsik(String gelaxkaID) {
+        stocka.removeIf(item -> item.getGelaxkaID().equals(gelaxkaID) && item.getKantitatea() == 0);
+    }
+
     // EAN-13 balidatu
     public boolean balidatuEAN13(String ean13) {
         if (ean13 == null || ean13.trim().isEmpty()) {
             System.out.println("Errorea: EAN-13 kodea ezin da hutsik egon.");
             return false;
         }
-        
+
         if (!ean13.matches("\\d{13}")) {
             System.out.println("Errorea: EAN-13 kodeak 13 digitu eduki behar ditu (zenbaki osoak).");
             return false;
         }
-        
+
         // EAN-13 katalogoan dagoen egiazta
         if (billatuProduktua(ean13) == null) {
             System.out.println("Errorea: EAN-13 kodea ez da katalogoan aurkitu.");
@@ -223,7 +234,7 @@ public class Biltegia {
             }
             return false;
         }
-        
+
         return true;
     }
 
@@ -233,12 +244,12 @@ public class Biltegia {
             System.out.println("Errorea: Gelaxka IDa ezin da hutsik egon.");
             return false;
         }
-        
+
         if (!gelaxkaID.matches("[A-Z0-9]+-[0-9]+")) {
             System.out.println("Errorea: Gelaxka IDaren formatua okerra da. Adibidez: A1-1, B2-4");
             return false;
         }
-        
+
         return true;
     }
 
@@ -248,12 +259,12 @@ public class Biltegia {
             System.out.println("Errorea: Kantitatea 0 baino handiagoa izan behar da.");
             return false;
         }
-        
+
         if (kantitatea > 1000) {
             System.out.println("Errorea: Kantitatea gehiegiz handia da (max 1000).");
             return false;
         }
-        
+
         return true;
     }
 
@@ -266,12 +277,12 @@ public class Biltegia {
                 break;
             }
         }
-        
+
         if (!aurkitu) {
             System.out.println("Errorea: Produktu hori ez da gelaxka horretan aurkitu.");
             return false;
         }
-        
+
         return true;
     }
 }
