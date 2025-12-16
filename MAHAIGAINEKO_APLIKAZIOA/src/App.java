@@ -69,15 +69,37 @@ public class App {
     }
 
     private static void stockaSartu() {
+        biltegia.erakutsiProduktuguztiakGelaxketan();
         System.out.print("Sartu EAN-13 kodea: ");
-        String ean13 = scanner.nextLine();
+        String ean13 = scanner.nextLine().trim();
+
+        if (!biltegia.balidatuEAN13(ean13)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         System.out.print("Sartu Gelaxka IDa (Biltegian sartzeko): ");
-        String gelaxkaID = scanner.nextLine();
+        String gelaxkaID = scanner.nextLine().trim();
+
+        if (!biltegia.balidatuGelaxkaID(gelaxkaID)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         System.out.print("Sartu sartu nahi den kantitatea: ");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Errorea: Kantitatea zenbaki bat izan behar da.");
+            scanner.nextLine();
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
         int kantitatea = scanner.nextInt();
         scanner.nextLine();
+
+        if (!biltegia.balidatuKantitatea(kantitatea)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         if (biltegia.sartuStocka(ean13, gelaxkaID, kantitatea)) {
             System.out.println("Stocka arrakastaz sartu da.");
@@ -87,15 +109,42 @@ public class App {
     }
 
     private static void stockaAtera() {
+        biltegia.erakutsiProduktuguztiakGelaxketan();
         System.out.print("Sartu EAN-13 kodea: ");
-        String ean13 = scanner.nextLine();
+        String ean13 = scanner.nextLine().trim();
+
+        if (!biltegia.balidatuEAN13(ean13)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         System.out.print("Sartu Gelaxka IDa (Produktu hori duen Gelaxka): ");
-        String gelaxkaID = scanner.nextLine();
+        String gelaxkaID = scanner.nextLine().trim();
+
+        if (!biltegia.balidatuGelaxkaID(gelaxkaID)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
+
+        if (!biltegia.balidatuGelaxkaProduktua(ean13, gelaxkaID)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         System.out.print("Sartu atera nahi den kantitatea: ");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Errorea: Kantitatea zenbaki bat izan behar da.");
+            scanner.nextLine();
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
         int kantitatea = scanner.nextInt();
         scanner.nextLine();
+
+        if (!biltegia.balidatuKantitatea(kantitatea)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         if (biltegia.ateraStocka(ean13, gelaxkaID, kantitatea)) {
             System.out.println("Stocka arrakastaz atera da.");
@@ -122,19 +171,51 @@ public class App {
     }
 
     private static void produktuMugimendua() {
+        biltegia.erakutsiProduktuguztiakGelaxketan();
         System.out.println("\n--- Produktuaren Mugimendua ---");
         System.out.print("Sartu mugitu nahi den EAN-13 kodea: ");
-        String ean13 = scanner.nextLine();
+        String ean13 = scanner.nextLine().trim();
+
+        if (!biltegia.balidatuEAN13(ean13)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         System.out.print("Sartu Jatorrizko Gelaxka IDa: ");
-        String jatorrizkoa = scanner.nextLine();
+        String jatorrizkoa = scanner.nextLine().trim();
+
+        if (!biltegia.balidatuGelaxkaID(jatorrizkoa)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
+
+        if (!biltegia.balidatuGelaxkaProduktua(ean13, jatorrizkoa)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         System.out.print("Sartu Helmuga Gelaxka IDa: ");
-        String helmuga = scanner.nextLine();
+        String helmuga = scanner.nextLine().trim();
+
+        if (!biltegia.balidatuGelaxkaID(helmuga)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         System.out.print("Sartu mugitu nahi den kantitatea: ");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Errorea: Kantitatea zenbaki bat izan behar da.");
+            scanner.nextLine();
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
         int kantitatea = scanner.nextInt();
         scanner.nextLine();
+
+        if (!biltegia.balidatuKantitatea(kantitatea)) {
+            System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }
 
         if (biltegia.mugituProduktua(ean13, jatorrizkoa, helmuga, kantitatea)) {
             System.out.println("Mugimendua arrakastatsua.");
@@ -148,7 +229,8 @@ public class App {
         System.out.println("\n--- Kontsultak eta Informazioa ---");
         System.out.println("1. Gelaxkaren Kontsulta");
         System.out.println("2. Inbentario Osoa");
-        System.out.println("3. Produktuaren Kontsulta (EAN-13 edo kategoriaren arabera)");
+        System.out.println("3. Produktu Guztiak Gelaxketan");
+        System.out.println("4. Produktuaren Kontsulta (EAN-13 edo kategoriaren arabera)");
         System.out.print("Aukeratu Kontsulta Mota:");
 
         int aukera = scanner.nextInt();
@@ -159,6 +241,8 @@ public class App {
         } else if (aukera == 2) {
             inbentarioOsoaErakutsi();
         } else if (aukera == 3) {
+            biltegia.erakutsiProduktuguztiakGelaxketan();
+        } else if (aukera == 4) {
             System.out.println(
                     "Produktuaren kontsulta (EAN-13 edo kategoriaren arabera) ez dago inplementatuta oraindik.");
         }
