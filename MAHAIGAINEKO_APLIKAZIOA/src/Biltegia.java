@@ -23,8 +23,6 @@ public class Biltegia {
         stocka.add(new GelaxkaStock("A1-1", "5449000000100", 15));
         stocka.add(new GelaxkaStock("A1-2", "1112223334445", 15));
         stocka.add(new GelaxkaStock("B2-4", "8437008888001", 15));
-
-        gelaxkaBetetaLista.add("B2-4");
     }
 
     public boolean sartuStocka(String ean13, String gelaxkaID, int kantitatea) {
