@@ -1,12 +1,18 @@
 /* 2. Header (Menu de navegación) */
 header {
     padding: 20px 50px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 3px solid #eee;
     position: sticky;
     top: 0;
     background: white;
     z-index: 100;
     color: black;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
 }
 
 nav {
@@ -16,7 +22,7 @@ nav {
 }
 
 .nav-logo img {
-   width: 150px;
+    width: 150px;
     height: 150px;
 }
 
@@ -24,4 +30,12 @@ nav ul {
     display: flex;
     list-style: none;
     gap: 30px;
+}
+
+nav li {
+    transition: transform 0.3s ease;
+}
+
+nav li:hover {
+    transform: scale(1.1);
 }

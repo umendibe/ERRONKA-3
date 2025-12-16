@@ -1,0 +1,115 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.filtro_elementuak {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.filtro_elementuak button {
+    background: white;
+    border: 2px solid #555;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filtro_elementuak button:hover {
+    background: #555;
+    color: white;
+    transform: scale(1.1);
+}
+
+.produktua {
+    gap: 25px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+.produktuak>div {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.produktuak img {
+    width: 100%;
+    max-width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.produktuak h3 {
+    margin: 10px 0 5px 0;
+    font-size: 18px;
+}
+
+.Prezioa {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.produktuak button {
+    background: #1a73e8;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.produktuak button:hover {
+    background: #0d47a1;
+}
+
+.produktua button img {
+    width: 30px;
+    height: 30px;
+    
+}
+
+#goraBueltatu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.296);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+#goraBueltatu:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#kontenidoa {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+

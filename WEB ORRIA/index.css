@@ -2,12 +2,6 @@ html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-header a {
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-}
-
 .titulua {
     margin-right: 150px;
     letter-spacing: 12px;
@@ -58,7 +52,6 @@ body {
     margin-top: 20px;
     font-size: 1.5rem;
     color: #888;
-    animation: bounce 2s infinite;
 }
 
 
