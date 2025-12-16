@@ -9,6 +9,12 @@ header {
     color: black;
 }
 
+header a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
 nav {
     display: flex;
     justify-content: space-between;

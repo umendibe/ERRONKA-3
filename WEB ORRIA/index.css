@@ -2,12 +2,6 @@ html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-header a {
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-}
-
 .titulua {
     margin-right: 150px;
     letter-spacing: 12px;
