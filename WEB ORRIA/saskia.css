@@ -15,6 +15,7 @@ main {
     box-sizing: border-box;
     justify-content: space-between;
     align-items: flex-start;
+    padding-bottom: 300px;
 
 }
 
