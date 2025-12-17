@@ -26,7 +26,8 @@ public class Biltegia {
     }
 
     public boolean sartuStocka(String ean13, String gelaxkaID, int kantitatea) {
-        if (kantitatea <= 0)
+        // Internal validations to ensure callers cannot bypass rules
+        if (!balidatuEAN13(ean13) || !balidatuGelaxkaID(gelaxkaID) || !balidatuKantitatea(kantitatea))
             return false;
 
         // Gelaxkaren kapazitate totala kalkulatu
@@ -245,7 +246,8 @@ public class Biltegia {
             return false;
         }
 
-        if (!gelaxkaID.matches("[A-Z0-9]+-[0-9]+")) {
+        // Expected format: single uppercase letter, digits, dash, digits (e.g. A1-1)
+        if (!gelaxkaID.matches("[A-Z]\\d+-\\d+")) {
             System.out.println("Errorea: Gelaxka IDaren formatua okerra da. Adibidez: A1-1, B2-4");
             return false;
         }
