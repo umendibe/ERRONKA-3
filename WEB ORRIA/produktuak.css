@@ -105,6 +105,34 @@ body {
     filter: invert(1);
 }
 
+.produktua{
+
+    background-color: #8a8989;
+    border-radius: 40px;
+    box-shadow: black 2px 2px 10px  ;
+}
+
+.produktua h3{
+
+   
+    margin: 20px 0px 10px 10px;
+}
+.produktua p{
+
+    
+    margin: 20px 0px 10px 10px;
+}
+.produktua .img-container img.img-main{
+
+    border-radius: 80px;
+}
+
+.produktua .img-container img.img-top{
+
+    border-radius: 80px;
+}
+
+
 .img-container {
     position: relative;
     width: 100%;
