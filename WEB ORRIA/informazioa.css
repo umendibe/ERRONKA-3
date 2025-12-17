@@ -11,7 +11,7 @@ main {
     width: 500px;
 
 }
-/* Lehenengo edukiaren partea*/
+/* Lehenengo edukiaren */
 
 .informazioGuztiBloke {
 
@@ -70,12 +70,14 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 450px;
+
 }
 
 .edukia3 .img2 img {
 
     height: 308px;
-    width: 650px;
+    width: 550px;
     border-radius: 40px;
 }
 
@@ -90,7 +92,7 @@ main {
 .edukia3 .textua {
 
     margin-left: 40px;
-
+    
 }
 
 
@@ -166,14 +168,6 @@ main {
     border-radius: 60px;
 }
 
-.edukia2{
-
-
-padding: 80px 0px 50px 90px;
-display: flex;
-justify-content: center;
-
-}
 
 .edukia4{
 
