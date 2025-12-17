@@ -225,10 +225,19 @@ const produktuakBistaratu = (bistaratzekoProduktuak) => {
     });
 }
 
-const filtratuProduktuak = (kategoria) => {
-    const bistaratzekoProduktuak = arropa.filter(produktua => produktua.kategoria === kategoria)
-    produktuakBistaratu(bistaratzekoProduktuak)
+const desordenatuArray = (array) => {
+    const arrayKopia = [...array]; 
+    for (let i = arrayKopia.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arrayKopia[i], arrayKopia[j]] = [arrayKopia[j], arrayKopia[i]];
+    }
+    return arrayKopia;
+};
 
+const filtratuProduktuak = (kategoria) => {
+    const filtratuak = arropa.filter(produktua => produktua.kategoria === kategoria);
+    const desordenatuak = desordenatuArray(filtratuak);
+    produktuakBistaratu(desordenatuak);
 }
 
 const prakakBtn = document.getElementById('prakak');
@@ -259,10 +268,10 @@ jakakBtn.addEventListener('click', () => {
 });
 
 guztiakBtn.addEventListener('click', () => {
-    produktuakBistaratu(arropa);
+    produktuakBistaratu(desordenatuArray(arropa));
 });
 
-produktuakBistaratu(arropa)
+produktuakBistaratu(desordenatuArray(arropa));
 
 function goraBueltatu() {
 
