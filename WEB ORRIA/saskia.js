@@ -1,5 +1,7 @@
-document.getElementById('erosiBut').onclick= function() {
+function irekiDialogoa() {
+  document.getElementById("popup").style.display = "block";
+}
 
-    alert("Zure erosketa egin da. Eskerrik asko zure erosketagatik!");
-
-} 
+function itxiDialogoa() {
+  document.getElementById("popup").style.display = "none";
+}

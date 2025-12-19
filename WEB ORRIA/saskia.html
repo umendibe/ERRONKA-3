@@ -28,11 +28,11 @@
 
                 </div>
                 <ul>
-                <li><a href="index.html">Orrialde Nagusia</a></li>
-                <li><a href="produktuak.html">Produktuak</a></li>
-                <li><a href="saskia.html">Saskia</a></li>
-                <li><a href="kontaktua.html">Kontaktua</a></li>
-                <li><a href="informazioa.html">Informazioa</a></li>
+                    <li><a href="index.html">Orrialde Nagusia</a></li>
+                    <li><a href="produktuak.html">Produktuak</a></li>
+                    <li><a href="saskia.html">Saskia</a></li>
+                    <li><a href="kontaktua.html">Kontaktua</a></li>
+                    <li><a href="informazioa.html">Informazioa</a></li>
                 </ul>
             </nav>
         </header>
@@ -90,13 +90,19 @@
 
                     <p>Totala..€</p>
 
-                    <button id="erosiBut">Erosi</button>
+                    <button id="erosiBut" onclick="irekiDialogoa()">Erosi</button>
 
                 </article>
 
 
 
             </section>
+
+            <div id="popup">
+                <p>Produktuak erosi dituzu</p>
+                <button onclick="itxiDialogoa()" class="botoia">❌</button>
+            </div>
+
         </main>
 
         <footer>
