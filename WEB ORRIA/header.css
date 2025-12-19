@@ -8,6 +8,7 @@ header {
     z-index: 100;
     color: black;
     width: 100vw;
+    flex-wrap: wrap;
 }
 
 header a {

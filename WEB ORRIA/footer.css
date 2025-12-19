@@ -4,6 +4,8 @@ footer {
     background: #1a1a1a;
     color: white;
     font-size: 0.9rem;
+    flex-wrap: wrap;
+    width: 100vw;
 }
 
 #footer1 {

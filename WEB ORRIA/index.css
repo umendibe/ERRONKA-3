@@ -2,6 +2,11 @@ html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 .titulua {
     margin-right: 150px;
     letter-spacing: 12px;
