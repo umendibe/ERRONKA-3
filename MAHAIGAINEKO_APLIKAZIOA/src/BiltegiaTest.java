@@ -23,7 +23,7 @@ public class BiltegiaTest {
     void testAteraEtaHustuOsoa() {
         biltegia.ateraStocka("5449000000100", "A1-1", 15);
         assertFalse(outContent.toString().contains("hutsik dago"));
-        assertFalse(biltegia.kontsultatuGelaxka("A1-1").isEmpty());
+        assertTrue(biltegia.kontsultatuGelaxka("A1-1").isEmpty());
     }
 
     @Test
