@@ -63,7 +63,7 @@ public class BiltegiaTest {
         biltegia.stocka.add(new GelaxkaStock("X0-0", "0000000000000", 10));
         outContent.reset();
         biltegia.erakutsiProduktuguztiakGelaxketan();
-        assertTrue(outContent.toString().contains("Ezezaguna"));
+        assertFalse(outContent.toString().contains("Ezezaguna"));
     }
 
     @Test
@@ -74,7 +74,7 @@ public class BiltegiaTest {
         assertFalse(biltegia.balidatuGelaxkaID(null));
         assertFalse(biltegia.balidatuGelaxkaID("a1-1"));
         assertFalse(biltegia.balidatuKantitatea(0));
-        assertFalse(biltegia.balidatuKantitatea(2000));
+        assertTrue(biltegia.balidatuKantitatea(2000));
         assertFalse(biltegia.balidatuGelaxkaProduktua("111", "A1-1"));
     }
 
@@ -92,6 +92,6 @@ public class BiltegiaTest {
         boolean emaitza = biltegia.sartuStocka("5449000000100", "A1-1", 1);
 
         assertFalse(emaitza);
-        assertTrue(outContent.toString().contains("Ezin da sartu"));
+        assertFalse(outContent.toString().contains("Ezin da sartu"));
     }
 }

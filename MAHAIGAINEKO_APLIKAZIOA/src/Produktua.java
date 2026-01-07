@@ -1,4 +1,3 @@
-
 public class Produktua {
     private String ean13;
     private String izena;
@@ -13,7 +12,7 @@ public class Produktua {
     public String getEan13() { return ean13; }
     public String getIzena() { return izena; }
     public String getKategoria() { return kategoria; }
-    
+
     @Override
     public String toString() {
         return "[" + ean13 + "] " + izena + " (" + kategoria + ")";

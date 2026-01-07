@@ -26,15 +26,19 @@ public class Biltegia {
     }
 
     public boolean sartuStocka(String ean13, String gelaxkaID, int kantitatea) {
-        if (!balidatuEAN13(ean13) || !balidatuGelaxkaID(gelaxkaID) || !balidatuKantitatea(kantitatea)) return false;
+        if (!balidatuEAN13(ean13) || !balidatuGelaxkaID(gelaxkaID) || !balidatuKantitatea(kantitatea))
+            return false;
 
         int gelaxkaKapazitatea = kalkulatuGelaxkaKapazitatea(gelaxkaID);
-        
+
+        // 1. Kapazitate muga egiaztatu
         if (gelaxkaKapazitatea + kantitatea > 100) {
-            System.out.println("ERROREA: " + gelaxkaID + " gelaxkak ez du leku nahikorik (Max 100, unean: " + gelaxkaKapazitatea + ").");
+            System.out.println("ERROREA: " + gelaxkaID + " gelaxkak ez du leku nahikorik (Max 100, unean: "
+                    + gelaxkaKapazitatea + ").");
             return false;
         }
 
+        // 2. Eskuz markatutako 'beteta' egoera egiaztatu
         if (gelaxkaBetetaLista.contains(gelaxkaID)) {
             System.out.println("ERROREA: " + gelaxkaID + " gelaxka BETETA gisa markatuta dago.");
             return false;
@@ -43,25 +47,30 @@ public class Biltegia {
         for (GelaxkaStock item : stocka) {
             if (item.getGelaxkaID().equals(gelaxkaID) && item.getProduktuEAN13().equals(ean13)) {
                 item.setKantitatea(item.getKantitatea() + kantitatea);
-                if (item.getKantitatea() >= 100) gelaxkaBetetaLista.add(gelaxkaID);
+                if (item.getKantitatea() >= 100)
+                    gelaxkaBetetaLista.add(gelaxkaID);
                 return true;
             }
         }
 
         stocka.add(new GelaxkaStock(gelaxkaID, ean13, kantitatea));
-        if (gelaxkaKapazitatea + kantitatea >= 100) gelaxkaBetetaLista.add(gelaxkaID);
+        if (gelaxkaKapazitatea + kantitatea >= 100)
+            gelaxkaBetetaLista.add(gelaxkaID);
         return true;
     }
 
     public boolean ateraStocka(String ean13, String gelaxkaID, int kantitatea) {
-        if (!balidatuGelaxkaProduktua(ean13, gelaxkaID)) return false;
+        if (!balidatuGelaxkaProduktua(ean13, gelaxkaID))
+            return false;
 
         for (GelaxkaStock item : stocka) {
             if (item.getGelaxkaID().equals(gelaxkaID) && item.getProduktuEAN13().equals(ean13)) {
                 if (item.getKantitatea() >= kantitatea) {
                     item.setKantitatea(item.getKantitatea() - kantitatea);
-                    if (item.getKantitatea() < 100) gelaxkaBetetaLista.remove(gelaxkaID);
-                    if (item.getKantitatea() == 0) kenduGelaxkaHutsik(gelaxkaID);
+                    if (item.getKantitatea() < 100)
+                        gelaxkaBetetaLista.remove(gelaxkaID);
+                    if (item.getKantitatea() == 0)
+                        kenduGelaxkaHutsik(gelaxkaID);
                     return true;
                 } else {
                     System.out.println("ERROREA: Ez dago nahikoa unitate (stockean: " + item.getKantitatea() + ").");
@@ -72,49 +81,31 @@ public class Biltegia {
     }
 
     public boolean mugituProduktua(String ean13, String jat, String hel, int kan) {
-        if (!balidatuGelaxkaID(hel)) return false;
+        if (!balidatuGelaxkaID(hel))
+            return false;
         if (ateraStocka(ean13, jat, kan)) {
-            if (sartuStocka(ean13, hel, kan)) return true;
+            if (sartuStocka(ean13, hel, kan))
+                return true;
             sartuStocka(ean13, jat, kan); // Rollback
         }
         return false;
     }
 
     public boolean transferituGelaxka(String jat, String hel) {
-        if (!balidatuGelaxkaID(hel) || !balidatuGelaxkaID(jat)) return false;
-        
-        // Jatorrizko gelaxkan dagoenaren kopia lortu (ConcurrentModificationException ekiditeko)
-        List<GelaxkaStock> jatorrizkoStockKopia = new ArrayList<>();
-        for (GelaxkaStock s : stocka) {
-            if (s.getGelaxkaID().equals(jat)) {
-                jatorrizkoStockKopia.add(new GelaxkaStock(s.getGelaxkaID(), s.getProduktuEAN13(), s.getKantitatea()));
-            }
-        }
-
-        if (jatorrizkoStockKopia.isEmpty()) {
-            System.out.println("ERROREA: Jatorrizko gelaxka (" + jat + ") hutsik dago.");
+        if (!balidatuGelaxkaID(hel))
             return false;
-        }
-
-        int guztiraMugitu = jatorrizkoStockKopia.stream().mapToInt(GelaxkaStock::getKantitatea).sum();
-        int helmugaLekua = 100 - kalkulatuGelaxkaKapazitatea(hel);
-
-        if (guztiraMugitu > helmugaLekua) {
-            System.out.println("ERROREA: Helmugan ez dago leku nahikorik den dena mugitzeko.");
-            return false;
-        }
-
-        for (GelaxkaStock item : jatorrizkoStockKopia) {
-            String ean = item.getProduktuEAN13();
-            int kant = item.getKantitatea();
-            if (ateraStocka(ean, jat, kant)) {
-                if (!sartuStocka(ean, hel, kant)) {
-                    sartuStocka(ean, jat, kant); // Rollback errore baten kasuan
-                }
+        List<GelaxkaStock> jatorrizkoGelaxka = kontsultatuGelaxka(jat);
+        for (GelaxkaStock item : jatorrizkoGelaxka) {
+            if (ateraStocka(item.getProduktuEAN13(), jat, item.getKantitatea())) {
+                if (sartuStocka(item.getProduktuEAN13(), hel, item.getKantitatea()))
+                    continue;
+                sartuStocka(item.getProduktuEAN13(), jat, item.getKantitatea());
             }
         }
         return true;
     }
+
+    // --- BALIDAZIOAK MEZUEKIN ---
 
     public boolean balidatuEAN13(String ean13) {
         if (ean13 == null || !ean13.matches("\\d{13}")) {
@@ -145,39 +136,55 @@ public class Biltegia {
     }
 
     public boolean balidatuGelaxkaProduktua(String ean, String id) {
-        if (!balidatuGelaxkaID(id)) return false;
-        boolean aurkitua = stocka.stream().anyMatch(i -> i.getGelaxkaID().equals(id) && i.getProduktuEAN13().equals(ean));
+        if (!balidatuGelaxkaID(id))
+            return false;
+        boolean aurkitua = stocka.stream()
+                .anyMatch(i -> i.getGelaxkaID().equals(id) && i.getProduktuEAN13().equals(ean));
         if (!aurkitua) {
             System.out.println("ERROREA: " + id + " gelaxkan ez dago " + ean + " produktua.");
         }
         return aurkitua;
     }
 
+    // --- BESTE METODOAK ---
+
     public Produktua billatuProduktua(String ean13) {
-        for (Produktua p : produktuKatalogoa) if (p.getEan13().equals(ean13)) return p;
+        for (Produktua p : produktuKatalogoa)
+            if (p.getEan13().equals(ean13))
+                return p;
         return null;
     }
 
     public List<GelaxkaStock> kontsultatuGelaxka(String id) {
         List<GelaxkaStock> res = new ArrayList<>();
-        for (GelaxkaStock s : stocka) if (s.getGelaxkaID().equals(id)) res.add(s);
+        for (GelaxkaStock s : stocka)
+            if (s.getGelaxkaID().equals(id))
+                res.add(s);
         return res;
     }
 
     public void erakutsiProduktuguztiakGelaxketan() {
-        if (stocka.isEmpty()) { System.out.println("Biltegia hutsik."); return; }
+        if (stocka.isEmpty()) {
+            System.out.println("Biltegia hutsik.");
+            return;
+        }
         Map<String, List<GelaxkaStock>> map = new LinkedHashMap<>();
-        for (GelaxkaStock s : stocka) map.computeIfAbsent(s.getGelaxkaID(), k -> new ArrayList<>()).add(s);
+        for (GelaxkaStock s : stocka)
+            map.computeIfAbsent(s.getGelaxkaID(), k -> new ArrayList<>()).add(s);
         map.forEach((id, edukiak) -> {
             int kap = edukiak.stream().mapToInt(GelaxkaStock::getKantitatea).sum();
-            System.out.println("Gelaxka: " + id + " [" + kap + "/100] " + (gelaxkaBetetaLista.contains(id) ? "(BETETA)" : ""));
-            for (GelaxkaStock s : edukiak) System.out.println("  -> " + billatuProduktua(s.getProduktuEAN13()) + " (" + s.getKantitatea() + ")");
+            System.out.println(
+                    "Gelaxka: " + id + " [" + kap + "/100] " + (gelaxkaBetetaLista.contains(id) ? "(BETETA)" : ""));
+            for (GelaxkaStock s : edukiak)
+                System.out.println("  -> " + billatuProduktua(s.getProduktuEAN13()) + " (" + s.getKantitatea() + ")");
         });
     }
 
     public List<Produktua> bilatuProduktuaKatalogoan(String t) {
         List<Produktua> res = new ArrayList<>();
-        for (Produktua p : produktuKatalogoa) if (p.getEan13().equals(t) || p.getKategoria().equalsIgnoreCase(t)) res.add(p);
+        for (Produktua p : produktuKatalogoa)
+            if (p.getEan13().equals(t) || p.getKategoria().equalsIgnoreCase(t))
+                res.add(p);
         return res;
     }
 
@@ -185,6 +192,11 @@ public class Biltegia {
         return stocka.stream().filter(i -> i.getGelaxkaID().equals(id)).mapToInt(GelaxkaStock::getKantitatea).sum();
     }
 
-    private void kenduGelaxkaHutsik(String id) { stocka.removeIf(i -> i.getGelaxkaID().equals(id) && i.getKantitatea() == 0); }
-    public List<GelaxkaStock> kontsultatuInbentarioa() { return stocka; }
+    private void kenduGelaxkaHutsik(String id) {
+        stocka.removeIf(i -> i.getGelaxkaID().equals(id) && i.getKantitatea() == 0);
+    }
+
+    public List<GelaxkaStock> kontsultatuInbentarioa() {
+        return stocka;
+    }
 }
