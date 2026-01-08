@@ -1,7 +1,4 @@
-/**
- * Biltegian kudeatzen den produktu baten informazioa gordetzen duen klasea.
- * EAN-13 kodea, izena eta kategoria ditu.
- */
+
 public class Produktua {
     private String ean13;
     private String izena;
@@ -38,10 +35,6 @@ public class Produktua {
      */
     public String getKategoria() { return kategoria; }
     
-    /**
-     * Produktuaren informazioa testu formatuan itzultzen du.
-     * @return String formatua: [EAN] Izena (Kategoria)
-     */
     @Override
     public String toString() {
         return "[" + ean13 + "] " + izena + " (" + kategoria + ")";
