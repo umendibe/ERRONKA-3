@@ -1,10 +1,18 @@
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Aplikazio nagusia (Main). Erabiltzaile interfazea (kontsola bidezkoa)
+ * kudeatzen du eta Biltegia klasearekin komunikatzen da.
+ */
 public class App {
     private static Biltegia biltegia = new Biltegia();
     private static Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Programaren sarrera puntua.
+     * @param args Komando lerroko argumentuak.
+     */
     public static void main(String[] args) {
         System.out.println("=========================================");
         System.out.println("IndiUsurbil WMS - Biltegi Kudeaketa (Hasi)");
@@ -13,6 +21,9 @@ public class App {
         menuNagusia();
     }
 
+    /**
+     * Menu nagusia erakusten du eta erabiltzailearen aukera kudeatzen du.
+     */
     private static void menuNagusia() {
         int aukera;
         do {
@@ -52,6 +63,10 @@ public class App {
     }
 
     // ---------------------- 1. STOCKA KUDEATU FLUXUA ----------------------
+    
+    /**
+     * Stock-a kudeatzeko azpimenua (Sarrera/Irteera).
+     */
     private static void stockaKudeatuMenua() {
         System.out.println("\n--- Stocka Kudeatu (Sarrera / Irteera) ---");
         System.out.println("1. Produktua Sartu (Sarrera)");
@@ -68,6 +83,9 @@ public class App {
         }
     }
 
+    /**
+     * Stock sarrera bat egiteko prozesua. Datuak eskatu eta biltegian sartu.
+     */
     private static void stockaSartu() {
         biltegia.erakutsiProduktuguztiakGelaxketan();
         System.out.print("Sartu EAN-13 kodea: ");
@@ -108,6 +126,9 @@ public class App {
         }
     }
 
+    /**
+     * Stock irteera bat egiteko prozesua.
+     */
     private static void stockaAtera() {
         biltegia.erakutsiProduktuguztiakGelaxketan();
         System.out.print("Sartu EAN-13 kodea: ");
@@ -154,6 +175,10 @@ public class App {
     }
 
     // ---------------------- 2. BILTEGIAREN MUGIMENDUAK FLUXUA ----------------------
+    
+    /**
+     * Mugimenduen azpimenua.
+     */
     private static void mugimenduakMenua() {
         System.out.println("\n--- Biltegiaren Mugimenduak ---");
         System.out.println("1. Produktuaren Mugimendua");
@@ -170,6 +195,9 @@ public class App {
         }
     }
 
+    /**
+     * Produktu bat gelaxka batetik bestera mugitzeko prozesua.
+     */
     private static void produktuMugimendua() {
         biltegia.erakutsiProduktuguztiakGelaxketan();
         System.out.println("\n--- Produktuaren Mugimendua ---");
@@ -225,6 +253,10 @@ public class App {
     }
 
     // ---------------------- 3. KONTSULTA ETA INFORMAZIO FLUXUA ----------------------
+    
+    /**
+     * Kontsulten azpimenua.
+     */
     private static void kontsultakMenua() {
         System.out.println("\n--- Kontsultak eta Informazioa ---");
         System.out.println("1. Gelaxkaren Kontsulta");
@@ -248,6 +280,9 @@ public class App {
         }
     }
 
+    /**
+     * Gelaxka zehatz baten edukia bistaratzeko prozesua.
+     */
     private static void gelaxkaKontsultatu() {
         System.out.print("Sartu Gelaxkaren kodea: ");
         String gelaxkaID = scanner.nextLine();
@@ -265,6 +300,9 @@ public class App {
         System.out.println("Amaitu: Kontsultaren emaitza pantailan erakutsi da.");
     }
 
+    /**
+     * Inbentario osoa lerroz lerro erakusten duen metodoa.
+     */
     private static void inbentarioOsoaErakutsi() {
         System.out.println("\n--- Inbentario Osoaren Txostena ---");
 

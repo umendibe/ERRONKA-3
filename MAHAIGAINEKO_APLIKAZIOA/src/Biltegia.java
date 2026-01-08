@@ -1,11 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Biltegiaren kudeaketa nagusia egiten duen klasea.
+ * Stock-a, produktuak eta gelaxken egoerak kudeatzen ditu.
+ */
 public class Biltegia {
     private List<Produktua> produktuKatalogoa;
     protected List<GelaxkaStock> stocka;
     private List<String> gelaxkaBetetaLista;
 
+    /**
+     * Biltegia hasieratzen du eta hasierako datuak kargatzen ditu.
+     */
     public Biltegia() {
         produktuKatalogoa = new ArrayList<>();
         stocka = new ArrayList<>();
@@ -13,6 +20,9 @@ public class Biltegia {
         kargatuHasierakoDatuak();
     }
 
+    /**
+     * Proba egiteko hasierako datuak kargatzen ditu sisteman.
+     */
     private void kargatuHasierakoDatuak() {
         // Produktu motak
         produktuKatalogoa.add(new Produktua("5449000000100", "Kamiseta Zubieta", "Kamisetak"));
@@ -25,6 +35,13 @@ public class Biltegia {
         stocka.add(new GelaxkaStock("B2-4", "8437008888001", 15));
     }
 
+    /**
+     * Stock berria sartzen du gelaxka batean.
+     * * @param ean13      Produktuaren EAN kodea.
+     * @param gelaxkaID  Helmugako gelaxka.
+     * @param kantitatea Sartu beharreko kopurua.
+     * @return true sarrera ondo egin bada, false bestela.
+     */
     public boolean sartuStocka(String ean13, String gelaxkaID, int kantitatea) {
         // Internal validations to ensure callers cannot bypass rules
         if (!balidatuEAN13(ean13) || !balidatuGelaxkaID(gelaxkaID) || !balidatuKantitatea(kantitatea))
@@ -66,6 +83,13 @@ public class Biltegia {
         return true;
     }
 
+    /**
+     * Stocka ateratzen du gelaxka batetik.
+     * * @param ean13      Produktuaren EAN kodea.
+     * @param gelaxkaID  Jatorrizko gelaxka.
+     * @param kantitatea Atera beharreko kopurua.
+     * @return true irteera ondo egin bada, false bestela.
+     */
     public boolean ateraStocka(String ean13, String gelaxkaID, int kantitatea) {
         if (kantitatea <= 0)
             return false;
@@ -94,6 +118,14 @@ public class Biltegia {
         return false;
     }
 
+    /**
+     * Produktu kantitate bat gelaxka batetik bestera mugitzen du.
+     * * @param ean13               Produktuaren EAN kodea.
+     * @param jatorrizkoGelaxkaID Jatorrizko gelaxkaren IDa.
+     * @param helmugaGelaxkaID    Helmugako gelaxkaren IDa.
+     * @param kantitatea          Mugitu beharreko kopurua.
+     * @return true mugimendua ondo egin bada, false bestela.
+     */
     public boolean mugituProduktua(String ean13, String jatorrizkoGelaxkaID, String helmugaGelaxkaID, int kantitatea) {
         if (kantitatea <= 0)
             return false;
@@ -126,6 +158,11 @@ public class Biltegia {
         }
     }
 
+    /**
+     * Gelaxka baten edukia kontsultatzen du.
+     * * @param gelaxkaID Kontsultatu nahi den gelaxka.
+     * @return Gelaxka horretan dauden stock elementuen zerrenda.
+     */
     public List<GelaxkaStock> kontsultatuGelaxka(String gelaxkaID) {
         List<GelaxkaStock> emaitzak = new ArrayList<>();
         for (GelaxkaStock item : stocka) {
@@ -136,6 +173,10 @@ public class Biltegia {
         return emaitzak;
     }
 
+    /**
+     * Inbentario osoa itzultzen du.
+     * @return Stock osoaren zerrenda.
+     */
     public List<GelaxkaStock> kontsultatuInbentarioa() {
         return stocka;
     }
@@ -151,7 +192,9 @@ public class Biltegia {
         return kapazitatea;
     }
 
-    // Gelaxka guztien kapazitate totala erakutsi (produktuak eta lokalizazioak)
+    /**
+     * Gelaxka guztietan dauden produktuak eta haien egoera erakusten du kontsolan.
+     */
     public void erakutsiProduktuguztiakGelaxketan() {
         System.out.println("\n========================================");
         System.out.println("PRODUKTU GUZTIAK GELAXKETAN");
@@ -214,7 +257,11 @@ public class Biltegia {
         stocka.removeIf(item -> item.getGelaxkaID().equals(gelaxkaID) && item.getKantitatea() == 0);
     }
 
-    // EAN-13 balidatu
+    /**
+     * EAN-13 kodea balioztatzen du (formatua eta katalogoan egotea).
+     * * @param ean13 Egiaztatu beharreko EAN kodea.
+     * @return true baliozkoa bada, false bestela.
+     */
     public boolean balidatuEAN13(String ean13) {
         if (ean13 == null || ean13.trim().isEmpty()) {
             System.out.println("Errorea: EAN-13 kodea ezin da hutsik egon.");
@@ -239,7 +286,11 @@ public class Biltegia {
         return true;
     }
 
-    // Gelaxka ID balidatu
+    /**
+     * Gelaxka IDaren formatua balioztatzen du.
+     * * @param gelaxkaID Egiaztatu beharreko gelaxka IDa.
+     * @return true formatua zuzena bada, false bestela.
+     */
     public boolean balidatuGelaxkaID(String gelaxkaID) {
         if (gelaxkaID == null || gelaxkaID.trim().isEmpty()) {
             System.out.println("Errorea: Gelaxka IDa ezin da hutsik egon.");
@@ -255,7 +306,11 @@ public class Biltegia {
         return true;
     }
 
-    // Kantitate balidatu
+    /**
+     * Kantitatea baliozkoa den egiaztatzen du (0 < k <= 1000).
+     * * @param kantitatea Egiaztatu beharreko kantitatea.
+     * @return true baliozkoa bada, false bestela.
+     */
     public boolean balidatuKantitatea(int kantitatea) {
         if (kantitatea <= 0) {
             System.out.println("Errorea: Kantitatea 0 baino handiagoa izan behar da.");
@@ -270,7 +325,12 @@ public class Biltegia {
         return true;
     }
 
-    // Gelaxka eta produktua existitzen dauden egiazta (Irteera/Mugimendua)
+    /**
+     * Produktu bat gelaxka zehatz batean existitzen den egiaztatzen du.
+     * * @param ean13     Produktuaren kodea.
+     * @param gelaxkaID Gelaxkaren IDa.
+     * @return true produktua gelaxka horretan badago, false bestela.
+     */
     public boolean balidatuGelaxkaProduktua(String ean13, String gelaxkaID) {
         boolean aurkitu = false;
         for (GelaxkaStock item : stocka) {
