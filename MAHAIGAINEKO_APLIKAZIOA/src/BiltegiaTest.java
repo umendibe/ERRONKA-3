@@ -130,15 +130,6 @@ public class BiltegiaTest {
         assertTrue(emaitza);
         assertTrue(outContent.toString().contains("'beteta' egoeratik atera da"));
     }
-    
-    @Test
-    void testAteraStocka_LoopProduktuaEzAurkitu() throws Exception {
-        // Reflection erabiliz stocka manipulatu produktu bat ezabatzeko baina logikak bilatzen jarraitzeko
-        // Hau zaila da zuzenean lortzea `balidatuGelaxkaProduktua` deitzen delako lehenago.
-        // Baina `balidatu` pasatzen bada eta gero loop-ean aurkitzen ez bada (concurrency kasua teorikoa)
-        // Kasu honetan, `balidatuGelaxkaProduktua`-k babesten du metodoa, beraz estaldura hori
-        // balidazio metodoaren testean lortzen da.
-    }
 
     // --- MUGITU PRODUKTUA TESTAK ---
 
@@ -148,7 +139,7 @@ public class BiltegiaTest {
         boolean emaitza = biltegia.mugituProduktua("5449000000100", "A1-1", "A1-2", 5);
         assertTrue(emaitza);
         assertEquals(10, biltegia.kontsultatuGelaxka("A1-1").get(0).getKantitatea());
-        assertEquals(15, biltegia.kontsultatuGelaxka("A1-2").get(0).getKantitatea()); // 15 zegoen beste produktu bat? Ez, begiratu setUp. A1-2an 111... dago. Berria gehituko da.
+        assertEquals(15, biltegia.kontsultatuGelaxka("A1-2").get(0).getKantitatea());
     }
 
     @Test
@@ -169,7 +160,7 @@ public class BiltegiaTest {
 
     @Test
     void testMugituProduktua_Rollback() throws Exception {
-        // Eszenatokia: Mugitu nahi dugu, leku fisikoa badago (kalkulua ondo), 
+        // Eszenatokia: Mugitu nahi dugu, leku fisikoa badago, 
         // baina `sartuStocka`k huts egiten du (adibidez, gelaxka "beteta" zerrendan dagoelako eskuz).
         
         // 1. A1-2 "beteta" zerrendan sartu
@@ -178,7 +169,7 @@ public class BiltegiaTest {
         List<String> lista = (List<String>) field.get(biltegia);
         lista.add("A1-2"); // A1-2 beteta markatu (nahiz eta 15 bakarrik izan)
 
-        // 2. Saiatu mugitzen A1-1etik A1-2ra (lekua badago teorian, baina sartuStocka-k zerrenda begiratzen du)
+        // 2. Saiatu mugitzen A1-1etik A1-2ra
         boolean emaitza = biltegia.mugituProduktua("5449000000100", "A1-1", "A1-2", 5);
         
         assertFalse(emaitza);
@@ -225,13 +216,30 @@ public class BiltegiaTest {
         assertFalse(biltegia.kontsultatuInbentarioa().isEmpty());
     }
     
+    // --- BILAKETA TESTAK (BERRIA) ---
+    
     @Test
-    void testBilatuProduktuaKatalogoan() {
-        // EAN ez dena bilatzen
-        assertTrue(biltegia.balidatuEAN13("5449000000100"));
+    void testBilatuProduktuak() {
+        // EAN bidez
+        List<Produktua> eanList = biltegia.bilatuProduktuak("5449000000100");
+        assertEquals(1, eanList.size());
+        assertEquals("Kamiseta Zubieta", eanList.get(0).getIzena());
+
+        // Kategoria bidez (Case insensitive)
+        List<Produktua> katList = biltegia.bilatuProduktuak("kamisetak"); // minuskula
+        assertFalse(katList.isEmpty());
+        assertEquals("Kamisetak", katList.get(0).getKategoria());
+
+        // Ez dagoena
+        List<Produktua> hutsikList = biltegia.bilatuProduktuak("EZ_DAGO");
+        assertTrue(hutsikList.isEmpty());
+        
+        // Null edo hutsik
+        assertTrue(biltegia.bilatuProduktuak(null).isEmpty());
+        assertTrue(biltegia.bilatuProduktuak("").isEmpty());
     }
 
-    // --- BALIDAZIOEN TESTAK (Coverage osoa lortzeko) ---
+    // --- BALIDAZIOEN TESTAK ---
 
     @Test
     void testBalidatuEAN13() {

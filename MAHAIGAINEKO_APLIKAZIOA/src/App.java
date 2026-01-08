@@ -275,8 +275,7 @@ public class App {
         } else if (aukera == 3) {
             biltegia.erakutsiProduktuguztiakGelaxketan();
         } else if (aukera == 4) {
-            System.out.println(
-                    "Produktuaren kontsulta (EAN-13 edo kategoriaren arabera) ez dago inplementatuta oraindik.");
+            produktuKontsulta();
         }
     }
 
@@ -308,6 +307,38 @@ public class App {
 
         for (GelaxkaStock item : biltegia.stocka) {
             System.out.println(item);
+        }
+        System.out.println("Amaitu: Kontsultaren emaitza pantailan erakutsi da.");
+    }
+
+    /**
+     * Produktuak bilatzen ditu erabiltzaileak emandako irizpidearen arabera.
+     */
+    private static void produktuKontsulta() {
+        System.out.print("Sartu EAN-13 kodea edo Kategoria: ");
+        String irizpidea = scanner.nextLine().trim();
+
+        List<Produktua> emaitzak = biltegia.bilatuProduktuak(irizpidea);
+
+        if (emaitzak.isEmpty()) {
+            System.out.println("Ez da produkturik aurkitu irizpide horrekin.");
+        } else {
+            System.out.println("--- Aurkitutako Produktuak ---");
+            for (Produktua p : emaitzak) {
+                System.out.println(p.toString());
+                
+                // Produktua stockean dagoen egiaztatu eta non
+                boolean stockeanDago = false;
+                for (GelaxkaStock s : biltegia.stocka) {
+                    if (s.getProduktuEAN13().equals(p.getEan13())) {
+                        System.out.println("   -> Kokapena: " + s.getGelaxkaID() + " | Kantitatea: " + s.getKantitatea());
+                        stockeanDago = true;
+                    }
+                }
+                if (!stockeanDago) {
+                    System.out.println("   -> Ez dago stockean.");
+                }
+            }
         }
         System.out.println("Amaitu: Kontsultaren emaitza pantailan erakutsi da.");
     }

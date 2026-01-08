@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Biltegiaren kudeaketa nagusia egiten duen klasea.
@@ -206,7 +208,7 @@ public class Biltegia {
         }
 
         // Gelaxka bakarraren arabera taldekatzea
-        java.util.Map<String, List<GelaxkaStock>> gelaxkaMap = new java.util.LinkedHashMap<>();
+        Map<String, List<GelaxkaStock>> gelaxkaMap = new LinkedHashMap<>();
 
         for (GelaxkaStock item : stocka) {
             gelaxkaMap.computeIfAbsent(item.getGelaxkaID(), k -> new ArrayList<>()).add(item);
@@ -255,6 +257,26 @@ public class Biltegia {
     // Gelaxka hutsik badago, stocketik kendu
     private void kenduGelaxkaHutsik(String gelaxkaID) {
         stocka.removeIf(item -> item.getGelaxkaID().equals(gelaxkaID) && item.getKantitatea() == 0);
+    }
+
+    /**
+     * Produktuak bilatzen ditu katalogoan emandako irizpidearen arabera (EAN edo Kategoria).
+     * @param irizpidea Bilaketa testua (EAN kodea edo Kategoria izena).
+     * @return Bat datozen produktuen zerrenda.
+     */
+    public List<Produktua> bilatuProduktuak(String irizpidea) {
+        List<Produktua> emaitzak = new ArrayList<>();
+        if (irizpidea == null || irizpidea.trim().isEmpty()) {
+            return emaitzak;
+        }
+        
+        for (Produktua p : produktuKatalogoa) {
+            // EAN kodea berdina bada edo Kategoria (maiuskula/minuskula kontuan hartu gabe)
+            if (p.getEan13().equals(irizpidea) || p.getKategoria().equalsIgnoreCase(irizpidea)) {
+                emaitzak.add(p);
+            }
+        }
+        return emaitzak;
     }
 
     /**

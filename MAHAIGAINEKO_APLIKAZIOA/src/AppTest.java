@@ -70,21 +70,13 @@ public class AppTest {
 
     @Test
     void testStockaSartu_Erroreak() throws Exception {
-        // Fluxua errorekin:
-        // 1 -> 1 
-        // -> EAN okerra (menura itzuli)
-        // 1 -> 1 -> EAN ona -> ID okerra (menura itzuli)
-        // 1 -> 1 -> EAN ona -> ID ona -> Kantitatea letra (errorea) -> Kantitatea zenbakia baina balidazio okerra (menura)
-        // 1 -> 1 -> EAN ona -> ID ona -> Kantitatea ona (sartu)
-        // 0
-        
         String input = 
             // EAN okerra
             "1\n1\nEAN_TXARRA\n" +
             // ID okerra
             "1\n1\n5449000000100\nID_TXARRA\n" +
             // Kantitatea letra
-            "1\n1\n5449000000100\nA1-1\nabc\n" + // Hemen 'abc' irakurtzen saiatzen da, Scanner-ek garbitzen du, eta menura itzultzen da (return egiten duelako metodoak errorearekin)
+            "1\n1\n5449000000100\nA1-1\nabc\n" +
             // Kantitatea balio okerra (logic)
             "1\n1\n5449000000100\nA1-1\n-5\n" +
             // 0 (Irten)
@@ -114,12 +106,6 @@ public class AppTest {
 
     @Test
     void testStockaAtera_Erroreak() throws Exception {
-        // 1 -> 2 -> EAN okerra
-        // 1 -> 2 -> EAN -> ID okerra
-        // 1 -> 2 -> EAN -> ID -> Produktua ez dago
-        // 1 -> 2 -> EAN -> ID -> Kantitatea letra
-        // 1 -> 2 -> EAN -> ID -> Kantitatea negatiboa
-        // 0
         String input = 
             "1\n2\nEAN_TXARRA\n" +
             "1\n2\n5449000000100\nID_TXARRA\n" +
@@ -146,19 +132,26 @@ public class AppTest {
 
     @Test
     void testKontsultak() throws Exception {
-        // 2 -> 1 (Gelaxka) -> ID -> 2 -> 2 (Inbentarioa) -> 2 -> 3 (Guztiak) -> 2 -> 4 (Inplementatu gabe) -> 0
+        // 2 -> 1 (Gelaxka) -> ID 
+        // -> 2 -> 2 (Inbentarioa) 
+        // -> 2 -> 3 (Guztiak) 
+        // -> 2 -> 4 (Bilaketa Kategoriaz) -> "Kamisetak"
+        // -> 2 -> 4 (Bilaketa hutsik/ez aurkitua) -> "XYZ"
+        // -> 0
         String input = "2\n1\nA1-1\n" + 
                        "2\n1\nZ9-9\n" + // Hutsik dagoen gelaxka
                        "2\n2\n" + 
                        "2\n3\n" + 
-                       "2\n4\n" + 
+                       "2\n4\nKamisetak\n" + 
+                       "2\n4\nXYZ\n" +
                        "0\n";
         testAppExecution(input, 
             "Gelaxka A1-1 Edukia", 
             "Gelaxka hutsa dago edo ez da aurkitu", 
             "Inbentario Osoaren Txostena", 
             "PRODUKTU GUZTIAK GELAXKETAN", 
-            "ez dago inplementatuta");
+            "Kamiseta Zubieta", // Emaitza aurkitua
+            "Ez da produkturik aurkitu"); // Ez aurkitua
     }
 
     @Test
@@ -170,14 +163,6 @@ public class AppTest {
     
     @Test
     void testMugimenduak_Erroreak() throws Exception {
-        // 3 -> 1 -> EAN okerra
-        // 3 -> 1 -> EAN -> Jat okerra
-        // 3 -> 1 -> EAN -> Jat -> Produktua ez dago
-        // 3 -> 1 -> EAN -> Jat -> Hel okerra
-        // 3 -> 1 -> EAN -> Jat -> Hel -> Kantitatea letra
-        // 3 -> 1 -> EAN -> Jat -> Hel -> Kantitatea negatiboa
-        // 3 -> 2 (Transferitu inplementatu gabe)
-        // 0
         String input = 
             "3\n1\nEAN_TXARRA\n" +
             "3\n1\n5449000000100\nID_TXARRA\n" +
@@ -185,7 +170,7 @@ public class AppTest {
             "3\n1\n5449000000100\nA1-1\nID_TXARRA\n" +
             "3\n1\n5449000000100\nA1-1\nA1-2\nabc\n" +
             "3\n1\n5449000000100\nA1-1\nA1-2\n-5\n" +
-            "3\n2\n" + 
+            "3\n2\n" + // Transferitu inplementatu gabe
             "0\n";
             
         testAppExecution(input, 
