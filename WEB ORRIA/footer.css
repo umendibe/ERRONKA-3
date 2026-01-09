@@ -80,3 +80,15 @@ footer {
 
 
 }
+
+@media (max-width: 768px) {
+
+    footer {
+        padding: 30px 20px;
+        font-size: 0.8rem;
+    }
+
+
+
+
+}  
