@@ -148,7 +148,7 @@ public class App {
         }
 
         if (!biltegia.balidatuGelaxkaProduktua(ean13, gelaxkaID)) {
-            System.out.println("Operazioa bertan behera geratu da.");
+            System.out.println("Produktua ez dago gelaxka horretan");
             return;
         }
 
@@ -164,6 +164,9 @@ public class App {
 
         if (!biltegia.balidatuKantitatea(kantitatea)) {
             System.out.println("Operazioa bertan behera geratu da.");
+            return;
+        }else if (kantitatea == 0) {
+            System.out.println("Kantitatea 0 baino handiagoa izan behar da.");
             return;
         }
 
