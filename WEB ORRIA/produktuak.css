@@ -19,6 +19,70 @@ body {
     gap: 15px;
     padding: 20px 0;
 }
+/* produktuak.css */
+
+/* FILTROEN BOTOIA (Defektuz ezkutatuta PC-n) */
+.filter-toggle {
+    display: none; /* PC-n ez da ikusten */
+    width: 100%;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.filter-toggle .icon {
+    transition: transform 0.3s ease;
+}
+
+/* RESPONSIVE FILTROAK (Mugikorrean - 768px baino gutxiago) */
+@media (max-width: 768px) {
+    /* Erakutsi "Filtroak" botoia */
+    .filter-toggle {
+        display: flex; 
+    }
+
+    /* Botoia zabalik dagoenean gezia biratu */
+    .filter-toggle.active .icon {
+        transform: rotate(180deg);
+    }
+
+    /* Ezkutatu filtroen botoiak defektuz */
+    .filtro_elementuak {
+        display: none; 
+        flex-direction: column; /* Botoiak bata bestearen azpian */
+        gap: 10px;
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    /* JavaScriptak .active jartzen dionean, erakutsi */
+    .filtro_elementuak.active {
+        display: flex;
+    }
+
+    /* Botoiak zabalera osora */
+    .filtro_elementuak button {
+        width: 100%;
+        text-align: left;
+        padding: 15px;
+    }
+}
+
+/* Animazio txiki bat menua irekitzerako */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 .filtro_elementuak button {
     background: white;

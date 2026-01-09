@@ -105,29 +105,9 @@ main {
    RESPONSIVE
 ========================= */
 
-/* Tablets */
-@media (max-width: 1024px) {
 
-    header {
-        padding: 20px 30px;
-    }
 
-    main {
-        padding: 80px 30px;
-    }
-
-    .hasierakoTextua {
-        font-size: 3rem;
-        letter-spacing: 6px;
-    }
-
-    .nav-logo img {
-        width: 120px;
-        height: auto;
-    }
-}
-
-/* Mugikor handiak */
+/* Mugikor eta tabletak */
 @media (max-width: 768px) {
 
     /* Header */
@@ -169,8 +149,17 @@ main {
         height: auto;
     }
 
-    .placeholder2 img a {
-        height: auto;
+    .placeholder2{
+
+        display: flex;
+        justify-content: space-evenly;
+        
+
+    }
+
+    .placeholder2 img  {
+       height: 300px;
+      
     }
 
     /* Footer */
@@ -178,21 +167,6 @@ main {
         padding: 30px 20px;
         font-size: 0.8rem;
     }
+   
 }
 
-/* Mugikor txikiak */
-@media (max-width: 480px) {
-
-    .hasierakoTextua {
-        font-size: 2rem;
-        letter-spacing: 2px;
-    }
-
-    .hero-text h2 {
-        font-size: 1.6rem;
-    }
-
-    nav ul {
-        gap: 10px;
-    }
-}

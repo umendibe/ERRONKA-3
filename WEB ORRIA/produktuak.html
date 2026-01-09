@@ -11,41 +11,50 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="index.css">
-
     <link rel="icon" type="image/png" href="img/logo().png">
+<script src="js/hamburgesaMenua.js" defer></script> 
 </head>
 
 <body>
     <header>
         <nav>
             <div class="nav-logo">
-
-                <a href="index.html"><img src="img/logo.png"></a>
+                <a href="index.html"><img src="img/logo.png" alt="IndiUsurbil Logo"></a>
             </div>
-            <ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-menu">
                 <li><a href="index.html">Orrialde Nagusia</a></li>
                 <li><a href="produktuak.html">Produktuak</a></li>
                 <li><a href="saskia.html">Saskia</a></li>
                 <li><a href="kontaktua.html">Kontaktua</a></li>
                 <li><a href="informazioa.html">Informazioa</a></li>
             </ul>
-            </ul>
         </nav>
     </header>
 
     <main>
-        <div class="filtro_elementuak">
-            <button id="guztiak">GUZTIAK</button>
-            <button id="prakak">PRAKAK</button>
-            <button id="kamisetak">KAMISETAK</button>
-            <button id="sudaderak">SUDADERAK</button>
-            <button id="alkandorak">ALKANDORAK</button>
-            <button id="jakak">JAKAK</button>
-        </div>
+    <button id="filterToggle" class="filter-toggle">
+        <span>FILTROAK</span>
+        <span class="icon">▼</span>
+    </button>
 
-        <div class="produktuak">
-            <div id="kontenidoa"></div>
-        </div>
+    <div class="filtro_elementuak" id="filtroMenu">
+        <button id="guztiak" class="active">GUZTIAK</button> <button id="prakak">PRAKAK</button>
+        <button id="kamisetak">KAMISETAK</button>
+        <button id="sudaderak">SUDADERAK</button>
+        <button id="alkandorak">ALKANDORAK</button>
+        <button id="jakak">JAKAK</button>
+    </div>
+
+    <div class="produktuak">
+        <div id="kontenidoa"></div>
+    </div>
         <button id="goraBueltatu" title="Gora Bueltatu" onclick="goraBueltatu()">⬆</button>
         <script src="js/produktuak.js" defer></script>
     </main>
