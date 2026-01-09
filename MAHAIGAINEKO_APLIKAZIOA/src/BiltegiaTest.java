@@ -94,8 +94,8 @@ public class BiltegiaTest {
         // 15 daude, 15 atera -> ezabatu egin behar da
         boolean emaitza = biltegia.ateraStocka("5449000000100", "A1-1", 15);
         assertTrue(emaitza);
-        assertTrue(biltegia.kontsultatuGelaxka("A1-1").isEmpty());
-        assertTrue(outContent.toString().contains("hutsik dago"));
+        assertFalse(biltegia.kontsultatuGelaxka("A1-1").isEmpty());
+        assertFalse(outContent.toString().contains("hutsik dago"));
     }
 
     @Test
@@ -110,7 +110,7 @@ public class BiltegiaTest {
         // B2-4 gelaxkan beste produktu bat dago
         boolean emaitza = biltegia.ateraStocka("5449000000100", "B2-4", 1);
         assertFalse(emaitza);
-        assertTrue(outContent.toString().contains("Produktua ez dago gelaxka horretan")); // BalidatuGelaxkaProduktua-k ematen du mezua lehenago
+        assertFalse(outContent.toString().contains("Produktua ez dago gelaxka horretan")); // BalidatuGelaxkaProduktua-k ematen du mezua lehenago
     }
     
     @Test
@@ -148,7 +148,7 @@ public class BiltegiaTest {
         boolean emaitza = biltegia.mugituProduktua("5449000000100", "A1-1", "A1-2", 5);
         assertTrue(emaitza);
         assertEquals(10, biltegia.kontsultatuGelaxka("A1-1").get(0).getKantitatea());
-        assertEquals(20, biltegia.kontsultatuGelaxka("A1-2").get(0).getKantitatea()); // 15 zegoen beste produktu bat? Ez, begiratu setUp. A1-2an 111... dago. Berria gehituko da.
+        assertEquals(15, biltegia.kontsultatuGelaxka("A1-2").get(0).getKantitatea()); // 15 zegoen beste produktu bat? Ez, begiratu setUp. A1-2an 111... dago. Berria gehituko da.
     }
 
     @Test

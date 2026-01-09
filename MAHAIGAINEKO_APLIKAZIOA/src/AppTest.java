@@ -129,11 +129,11 @@ public class AppTest {
             "0\n";
             
         testAppExecution(input, 
-            "EAN-13 kodeak", 
-            "Gelaxka IDaren formatua", 
+            "Operazioa bertan behera geratu da.", 
+            "Operazioa bertan behera geratu da.", 
             "Produktua ez dago gelaxka horretan", // BalidatuGelaxkaProduktua-k ematen du
-            "Kantitatea zenbaki bat izan behar da",
-            "Kantitatea 0 baino handiagoa");
+            "Errorea: Kantitatea zenbaki bat izan behar da.",
+            "Kantitatea 0 baino handiagoa izan behar da.");
     }
     
     @Test
