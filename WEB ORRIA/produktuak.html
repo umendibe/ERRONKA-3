@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="index.css">
     <link rel="icon" type="image/png" href="img/logo().png">
-<script src="js/main.js" defer></script> 
+    <script src="js/main.js" defer></script>
+    <script src="js/hamburgesaMenua.js" defer></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
             <div class="nav-logo">
                 <a href="index.html"><img src="img/logo.png" alt="IndiUsurbil Logo"></a>
             </div>
-            
+
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -39,22 +40,22 @@
     </header>
 
     <main>
-    <button id="filterToggle" class="filter-toggle">
-        <span>FILTROAK</span>
-        <span class="icon">▼</span>
-    </button>
+        <button id="filterToggle" class="filter-toggle">
+            <span>FILTROAK</span>
+            <span class="icon">▼</span>
+        </button>
 
-    <div class="filtro_elementuak" id="filtroMenu">
-        <button id="guztiak" class="active">GUZTIAK</button> <button id="prakak">PRAKAK</button>
-        <button id="kamisetak">KAMISETAK</button>
-        <button id="sudaderak">SUDADERAK</button>
-        <button id="alkandorak">ALKANDORAK</button>
-        <button id="jakak">JAKAK</button>
-    </div>
+        <div class="filtro_elementuak" id="filtroMenu">
+            <button id="guztiak" class="active">GUZTIAK</button> <button id="prakak">PRAKAK</button>
+            <button id="kamisetak">KAMISETAK</button>
+            <button id="sudaderak">SUDADERAK</button>
+            <button id="alkandorak">ALKANDORAK</button>
+            <button id="jakak">JAKAK</button>
+        </div>
 
-    <div class="produktuak">
-        <div id="kontenidoa"></div>
-    </div>
+        <div class="produktuak">
+            <div id="kontenidoa"></div>
+        </div>
         <button id="goraBueltatu" title="Gora Bueltatu" onclick="goraBueltatu()">⬆</button>
         <script src="js/produktuak.js" defer></script>
     </main>

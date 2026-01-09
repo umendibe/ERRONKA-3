@@ -43,7 +43,7 @@ body {
 }
 
 /* RESPONSIVE FILTROAK (Mugikorrean - 768px baino gutxiago) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     /* Erakutsi "Filtroak" botoia */
     .filter-toggle {
         display: flex; 
