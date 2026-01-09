@@ -64,13 +64,21 @@ body {
 /* 3. Contenido Principal */
 main {
     padding: 100px 50px;
-    max-width: 1200px;
     margin: 0 auto;
+
 }
 
 .hero-text h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+}
+
+.placeholder-img{
+
+    margin-left: 50px;
+    margin-right: 50px;
+
+
 }
 
 .placeholder-img img {
@@ -82,6 +90,7 @@ main {
 
 .placeholder2 {
     display: flex;
+    justify-content: center;
     gap: 20px;
     margin-top: 40px;
 }
@@ -144,6 +153,11 @@ main {
     .hero-text h2 {
         font-size: 2rem;
     }
+    .placeholder-img{
+
+      margin: 0px;
+
+    }
 
     .placeholder-img img  {
         height: auto;
@@ -152,7 +166,7 @@ main {
     .placeholder2{
 
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         
 
     }
