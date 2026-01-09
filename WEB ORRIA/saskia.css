@@ -19,7 +19,13 @@ main {
 
 }
 
+.nabigazioElementuak {
+    display: flex;
+}
 
+.nabigazioElementuak > p {
+    margin-right: 50px;
+}
 
 
 /* Ezkerreko blokearen partea, hau da, nire saskiaren textua eta hiru argazkiak*/
@@ -237,3 +243,84 @@ main {
     transform: scale(1.1);
 }
 
+@media screen and (max-width: 1024px), (max-width: 768px), (max-width: 480px) {
+   
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 50px;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    #mainTitle h1 {
+        font-size: 28px;
+        letter-spacing: 5px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    .ezkerrekoBlokea {
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .ezkerrekoBlokea .argazkiKontainer {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .argazkiKontainer .produktuElementua {
+        width: 100%; 
+        margin: 0 0 20px 0; 
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .eskubikoBlokea {
+        width: 90%;
+        margin: 20px auto;
+        height: auto;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .eskubikoBlokea .subEtaGastuak h2.erosketaTit {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .eskubikoBlokea .erosiBlokea button {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    #popup {
+        width: 90%;
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    #popup > p {
+        font-size: 24px;
+    }
+    
+    
+}
