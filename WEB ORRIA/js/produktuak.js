@@ -287,3 +287,35 @@ function goraBueltatu() {
 }
 
 goraBueltatu();
+
+/* js/produktuak.js - Gehitu hau fitxategiari */
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // FILTROEN MENU MUGIKORRAREN LOGIKA
+    const filterToggle = document.getElementById('filterToggle');
+    const filterMenu = document.getElementById('filtroMenu');
+
+    if (filterToggle && filterMenu) {
+        filterToggle.addEventListener('click', () => {
+            // Menua erakutsi/ezkutatu
+            filterMenu.classList.toggle('active');
+            // Botoiari estiloa aldatu (gezia biratzeko adibidez)
+            filterToggle.classList.toggle('active');
+        });
+    }
+
+    // Aukera bat klikatzean menua ixtea (nahi baduzu)
+    const filterButtons = document.querySelectorAll('.filtro_elementuak button');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Pantaila txikia bada bakarrik itxi
+            if (window.innerWidth <= 768) {
+                filterMenu.classList.remove('active');
+                filterToggle.classList.remove('active');
+            }
+        });
+    });
+
+    // ... Hemen zure produktuen filtro logika egongo litzateke ...
+});
