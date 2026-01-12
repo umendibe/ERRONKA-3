@@ -1,0 +1,866 @@
+
+
+main {
+
+    margin: 0;
+    padding: 0;
+}
+
+.textua {
+
+
+    height: 100px;
+    width: 500px;
+
+}
+/* Lehenengo edukiaren */
+
+.informazioGuztiBloke {
+
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+.informazioGuztiBloke:nth-child(odd) {
+
+    background-color: rgb(207, 213, 214);
+
+}
+
+.informazioGuztiBloke:nth-child(even) {
+
+    background-color: rgb(71, 95, 102);
+
+}
+
+.nortzukText {
+
+    height: 100px;
+    width: 500px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 40px;
+
+}
+
+.nortzukText h1 {
+
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 47px;
+
+}
+
+.edukia img {
+
+    height: 400px;
+    width: 600px;
+    border-radius: 40px;
+    padding: 0px 20px 20px 20px;
+}
+
+.edukia {
+
+    display: flex;
+
+}
+
+.edukia3 {
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+    align-items: flex-start;
+    gap: 40px;
+
+}
+
+.edukia3 .img2 img {
+
+    height: 308px;
+    width: 550px;
+    border-radius: 40px;
+}
+
+.edukia3 .img2  {
+
+   padding: 0px 40px 50px 0px;
+   flex-shrink: 0;
+   
+}
+
+
+
+.edukia3 .textua {
+
+    margin-left: 40px;
+    
+}
+
+
+.textua .titulu {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    font-weight: bold;
+    width: 800px;
+}
+
+
+.textua .paragrafo {
+
+    width: 720px;
+    margin-top: 20px;
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.tarjetaKontainer {
+
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: 750px;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 0 auto;
+
+}
+
+.tarjetaBlokea {
+
+    background-color: white;
+    width: 220px;
+    height: 220px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: black 2px 2px 10px;
+
+}
+
+.tarjetaBlokea img {
+
+    width: 150px;
+    height: 150px;
+}
+
+.infoBlokKontainer {
+
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.infoBlok {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 60px 60px;
+    background-color: rgb(193, 216, 236);
+    width: 170px;
+    height: 100px;
+    border-radius: 60px;
+}
+
+
+.edukia4{
+
+
+padding: 80px 0px 50px 90px;
+display: flex;
+justify-content: normal;
+justify-content: space-around;
+
+}
+
+
+.taldeTarjetaInfo{
+
+background-color: rgb(252, 252, 252);
+width: 400px;
+height: 450px;
+border-radius: 30px;
+display: flex; 
+flex-direction: column;
+margin-top: 0px;
+box-shadow: black 2px 2px 10px;
+}
+
+.taldeTarjetaInfo img{
+
+    width: 200px;
+    border-radius: 80px;
+    margin-left: 30px;
+    margin-top: 20px;
+
+}
+
+.taldeTarjetaInfo p.titulu {
+
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 20px;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   
+}
+
+.taldeTarjetaInfo p.paragrafo{
+
+
+    font-size: 15px;
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 340px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   
+   
+}
+.konbentzituKontainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    height: 500px;
+    padding: 0px 50px 0px 50px;
+
+}
+
+.konbentzituKontainer h1{
+
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+
+}
+
+
+.konbentzituKontainer p{
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 60px;
+    font-size: 20px;
+    
+}
+
+.konbentzituKontainer a.erosiOrainBut{
+
+    width: 350px;
+    height: 90px;
+    border-radius: 40px;
+    background-color: rgb(168, 219, 240);
+    border-style: none;
+    box-shadow: black 2px 2px 10px;
+    margin-top: 80px; ;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+
+}
+
+
+
+
+.kokapenaKontainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+
+
+}
+
+
+.nonKokatutaText h1{
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-bottom: 50px;
+    
+    
+}
+.kokapenaKontainer iframe{
+
+   border-radius: 30px;
+   box-shadow: black 2px 2px 10px;
+    
+
+
+}
+/* =========================
+   RESPONSIVE
+========================= */
+
+
+@media (max-width:550px){
+
+    main{
+
+        margin: 0;
+        padding: 0;
+
+       
+    }
+
+    /* Ajustar bloques principales */
+    .informazioGuztiBloke {
+
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    /* Ajustar títulos */
+    .nortzukText {
+
+        width: 100%;
+        height: auto;
+        padding: 30px 20px;
+        text-align: center;
+
+    }
+
+    .nortzukText h1 {
+
+        font-size: 28px;
+        margin: 0;
+
+    }
+
+    /* Ajustar contenido general (edukia) */
+    .edukia {
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        align-items: center;
+
+    }
+
+    .edukia article img {
+
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 20px;
+        padding: 0;
+        margin-bottom: 20px;
+
+    }
+
+    .edukia .textua {
+
+        width: 100%;
+        height: auto;
+        padding: 0;
+        margin-left: 0;
+
+    }
+
+    .textua .titulu {
+
+        font-size: 20px;
+        width: 100%;
+        padding: 20px 0 0 0;
+
+    }
+
+    .textua .paragrafo {
+
+        width: 100%;
+        font-size: 14px;
+        margin-top: 15px;
+
+    }
+
+    /* Ajustar tarjetas */
+    .tarjetaKontainer {
+        flex-direction: column;
+        width: 200px;
+        gap: 15px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        margin-bottom: 20px;        
+        
+
+    }
+
+    .tarjetaBlokea {
+
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        margin: 0;
+
+    }
+
+    /* Ajustar edukia2  */
+    .edukia2 {
+
+        width: 100%;
+        padding: 30px 20px;
+        box-sizing: border-box;
+
+    }
+
+    .infoBlokKontainer {
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        padding: 0;
+
+    }
+
+    .infoBlok {
+
+        width: 100%;
+        height: auto;
+        padding: 30px;
+        margin: 0;
+        border-radius: 20px;
+
+    }
+
+    /* Ajustar edukia3 */
+    .edukia3 {
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .edukia3 .img2 {
+
+        width: 100%;
+        padding: 0;
+        margin-top: 20px;
+        order: 2;
+
+    }
+
+    .edukia3 .img2 img {
+
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+
+    }
+
+    .edukia3 .textua {
+
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        padding: 0;
+        order: 1;
+
+    }
+
+    /* Ajustar edukia4 */
+    .edukia4 {
+
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+
+    }
+
+    .taldeTarjetaInfo {
+
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        margin-bottom: 30px;
+        padding: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .taldeTarjetaInfo img {
+
+        width: 150px;
+        border-radius: 50px;
+        margin-left: 0;
+        margin: 0 auto 15px;
+        display: block;
+
+    }
+
+    .taldeTarjetaInfo p.titulu {
+
+        font-size: 18px;
+        margin-left: 0;
+        text-align: center;
+
+    }
+
+    .taldeTarjetaInfo p.paragrafo {
+
+        font-size: 13px;
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .konbentzituKontainer {
+
+        width: 100%;
+        height: auto;
+        padding: 0 20px 30px 20px;
+        box-sizing: border-box;
+
+    }
+
+    .konbentzituKontainer h1 {
+
+        font-size: 20px;
+
+    }
+
+    .konbentzituKontainer p {
+
+        margin-top: 20px;
+        font-size: 14px;
+
+    }
+
+    .konbentzituKontainer a.erosiOrainBut {
+
+        width: 100%;
+        max-width: 300px;
+        height: 60px;
+        margin-top: 30px;
+        font-size: 14px;
+
+    }
+
+    .kokapenaKontainer {
+
+        width: 100%;
+        padding: 0 20px 30px 20px;
+        box-sizing: border-box;
+
+    }
+
+    .nonKokatutaText h1 {
+
+        font-size: 20px;
+        margin-bottom: 20px;
+
+    }
+
+    .kokapenaKontainer iframe {
+
+        width: 100%;
+        max-width: 350px;
+        height: 250px;
+
+    }
+
+
+}
+
+/* =========================
+   RESPONSIVE - TABLET (550px a 1400px)
+========================= */
+
+@media (min-width: 551px) and (max-width: 1024px) {
+
+    .informazioGuztiBloke {
+
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .nortzukText {
+
+        width: 100%;
+        height: auto;
+        padding: 30px 20px;
+        justify-content: center;
+        text-align: center;
+
+    }
+
+    .nortzukText h1 {
+
+        font-size: 35px;
+        margin: 0;
+
+    }
+
+    .edukia {
+
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+       
+
+    }
+
+    .edukia article img {
+
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        padding: 0;
+        margin-bottom: 20px;
+
+    }
+
+    .edukia .textua {
+
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        padding: 0;
+
+    }
+
+    .textua .titulu {
+
+        font-size: 24px;
+        width: 100%;
+
+    }
+
+    .textua .paragrafo {
+
+        width: 100%;
+        font-size: 15px;
+
+    }
+
+    .tarjetaKontainer {
+
+        width: 100%;
+        max-width: 100%;
+        flex-wrap: wrap;
+        padding: 0 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
+
+    }
+
+    .tarjetaBlokea {
+
+        flex: 1 1 calc(33.333% - 20px);
+        min-width: 150px;
+
+    }
+
+    .edukia2 {
+
+        width: 100%;
+        padding: 30px 20px;
+        box-sizing: border-box;
+
+    }
+
+    .infoBlokKontainer {
+
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+
+    }
+
+    .infoBlok {
+
+        flex: 1 1 calc(33.333% - 14px);
+        min-width: 120px;
+        margin: 10px;
+        padding: 20px;
+        height: auto;
+
+    }
+
+    .edukia3 {
+        display: flex;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        height: 600px
+        
+    }
+
+    .edukia3 .textua {
+
+        width: 100%;
+        margin-left: 0;
+        padding: 0;
+
+    }
+
+    .edukia3 .img2 {
+
+        width: 100%;
+        max-width: 600px;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .edukia3 .img2 img {
+
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+
+    }
+
+    .edukia4 {
+
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+
+    }
+
+    .taldeTarjetaInfo {
+
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin: 0;
+        padding: 20px;
+
+    }
+
+    .taldeTarjetaInfo img {
+
+        width: 150px;
+        margin: 0 auto 15px auto;
+
+    }
+
+    .taldeTarjetaInfo p.titulu {
+
+        margin-left: 0;
+        text-align: center;
+
+    }
+
+    .taldeTarjetaInfo p.paragrafo {
+
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .konbentzituKontainer {
+
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+
+    }
+
+    .konbentzituKontainer h1 {
+
+        font-size: 24px;
+
+    }
+
+    .konbentzituKontainer p {
+
+        font-size: 16px;
+        margin-top: 20px;
+
+    }
+
+    .konbentzituKontainer a.erosiOrainBut {
+
+        width: 100%;
+        max-width: 350px;
+        height: 70px;
+        margin-top: 25px;
+        font-size: 16px;
+
+    }
+
+    .kokapenaKontainer {
+
+        width: 100%;
+        padding: 0 20px 30px 20px;
+        box-sizing: border-box;
+
+    }
+
+    .nonKokatutaText h1 {
+
+        font-size: 24px;
+        margin-bottom: 20px;
+
+    }
+
+    .kokapenaKontainer iframe {
+
+        width: 100%;
+        max-width: 500px;
+        height: 300px;
+
+    }
+
+}
+
+@media (min-width:1025px){
+
+
+    
+
+}
+
+

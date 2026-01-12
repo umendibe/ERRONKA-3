@@ -1,0 +1,131 @@
+header {
+    padding: 0px 50px; /* Padding-a doitu dugu */
+    border-bottom: 1px solid #d8d8d8;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1000; /* Z-index altuagoa menuarentzat */
+    color: black;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+
+header a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100px; /* Altura minimoa finkatu */
+    padding: 10px 0;
+}
+
+
+.nav-logo img {
+    width: 120px; /* Pixka bat txikiagoa hobeto integratzeko */
+    height: auto;
+    display: block;
+}
+
+
+/* MENUA (Desktop) */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+
+nav li {
+    transition: transform 0.3s ease;
+}
+
+
+nav li:hover {
+    transform: scale(1.1);
+}
+
+
+/* HAMBURGESA BOTOIA (Defektuz ezkututa) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+}
+
+
+/* RESPONSIVE (Mugikorrak eta Tabletak - 768px baino gutxiago) */
+@media (max-width: 768px) {
+    header {
+        padding: 0 20px;
+    }
+
+
+    .hamburger {
+        display: block; /* Botoia erakutsi */
+        z-index: 1001;
+    }
+
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+
+    nav ul {
+        position: fixed;
+        left: -100%; /* Ezkerrera ezkutatu */
+        top: 50px;
+        gap: 0;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        height: 100vh; /* Pantaila osoa */
+        text-align: center;
+        transition: 0.3s;
+        padding-top: 120px; /* Goiko espazioa */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+
+    nav ul.active {
+        left: 0; /* Menua erakutsi */
+    }
+
+
+    nav ul li {
+        margin: 25px 0;
+    }
+   
+    nav ul li a {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,94 @@
+footer {
+    padding: 50px;
+    text-align: center;
+    background: #1a1a1a;
+    color: white;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    width: 100vw;
+}
+
+#footer1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 0px;
+}
+
+#footer1 .laguntza {
+
+   
+    list-style-type: none;
+    margin-left: 0;
+    justify-content: center;
+    
+}
+
+#footer1  .laguntza li a{
+
+   color: white;
+   text-decoration: none;
+
+}
+
+
+.informazioa {
+
+    list-style-type: none;
+  
+}
+ 
+
+#footer1 .informazioa li a{
+
+  text-decoration: none;
+     color: white;
+    list-style-type: none;
+}
+
+
+#footer1>ul>li {
+
+    margin-top: 30px;
+
+}
+
+#footer2 a img {
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+}
+
+#footer2 {
+    border-top: rgb(255, 255, 255) 2px solid;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    height: 200px;
+}
+
+
+
+#footer2 .saresozialak {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+@media (max-width: 768px) {
+
+    footer {
+        padding: 30px 20px;
+        font-size: 0.8rem;
+    }
+
+
+
+
+}  

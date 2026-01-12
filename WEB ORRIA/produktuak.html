@@ -6,34 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="MYUM">
     <meta name="description" content="IndiUsurbil web orriko orri nagusia da hau.">
-    <title>IndiUsurbil - Orri Nagusia</title>
-    <link rel="stylesheet" href="index.css">
+    <title>IndiUsurbil - Produktuak</title>
+    <link rel="stylesheet" href="produktuak.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="icon" type="image/png" href="img/logo().png">
+    <script src="js/main.js" defer></script>
     <script src="js/hamburgesaMenua.js" defer></script>
 </head>
 
-
 <body>
-      <section class="hasierakoOngiEtorria">
-        <h1 class="hasierakoTextua">IndiUsurbil</h1>
-        
-    </section>
     <header>
-
-       
         <nav>
             <div class="nav-logo">
                 <a href="index.html"><img src="img/logo.png" alt="IndiUsurbil Logo"></a>
             </div>
-
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-
 
             <ul class="nav-menu">
                 <li><a href="index.html">Orrialde Nagusia</a></li>
@@ -45,21 +38,26 @@
         </nav>
     </header>
 
-
     <main>
-        <section class="hero-text">
-            <h2>KALITATEZKO ARROPARIK ONENA</h2>
-            <p>Gure arropako azken kolekzioa ikusi.</p>
-            <div class="placeholder-img"><a href="produktuak.html"><img src="img/foto1.png"></a></div>
-            <div class="placeholder2">
-                <a href="produktuak.html"><img src="img/orriNagusia3.png"></a>
-                <a href="produktuak.html"><img src="img/orriNagusia4.png"></a>
-            </div>
-            <div class="placeholder-img">
-                <a href="produktuak.html"><img src="img/orriNagusia7.png"></a>
+        <button id="filterToggle" class="filter-toggle">
+            <span>FILTROAK</span>
+            <span class="icon">▼</span>
+        </button>
 
-            </div>
-        </section>
+        <div class="filtro_elementuak" id="filtroMenu">
+            <button id="guztiak" class="active">GUZTIAK</button> <button id="prakak">PRAKAK</button>
+            <button id="kamisetak">KAMISETAK</button>
+            <button id="sudaderak">SUDADERAK</button>
+            <button id="alkandorak">ALKANDORAK</button>
+            <button id="jakak">JAKAK</button>
+        </div>
+
+  
+    <div class="produktuak">
+        <div id="kontenidoa"></div>
+    </div>
+        <button id="goraBueltatu" title="Gora Bueltatu" onclick="goraBueltatu()">⬆</button>
+        <script src="js/produktuak.js" defer></script>
     </main>
 
     <footer>
@@ -70,7 +68,7 @@
 
                 <li>Laguntza:</li>
                 <li><a href="tel:926492739">Tel: 926492739</a></li>
-                <li><a href="www.whatsapp.com">Whatsapp</a></li>
+                <li><a style="text-decoration:none; color: white;" href="www.whatsapp.com">Whatsapp</a></li>
 
 
             </ul>
@@ -98,8 +96,6 @@
             </div>
         </div>
     </footer>
-    </div>
-
 </body>
 
 </html>
