@@ -219,14 +219,14 @@ const produktuakBistaratu = (bistaratzekoProduktuak) => {
   </div>
       <h3>${produktua.izena}</h3>
       <p class="Prezioa"> ${produktua.prezioa} €</p>
-      <button><a href class="karritora_gehitu_botoia"="saskia.html">Karritora gehitu</a><img src="img/carro.png"></button>
+      <a href="saskia.html" class="karritora_gehitu_botoia"><button>Karritora gehitu <img src="img/carro.png"></button></a>
     `
         kontenidoa.append(div)
     });
 }
 
 const desordenatuArray = (array) => {
-    const arrayKopia = [...array]; 
+    const arrayKopia = [...array];
     for (let i = arrayKopia.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [arrayKopia[i], arrayKopia[j]] = [arrayKopia[j], arrayKopia[i]];
@@ -291,7 +291,7 @@ goraBueltatu();
 /* js/produktuak.js - Gehitu hau fitxategiari */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // FILTROEN MENU MUGIKORRAREN LOGIKA
     const filterToggle = document.getElementById('filterToggle');
     const filterMenu = document.getElementById('filtroMenu');
