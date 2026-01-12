@@ -255,6 +255,13 @@ body {
     width: 100%;
 }
 
+.karritora_gehitu_botoia {
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
