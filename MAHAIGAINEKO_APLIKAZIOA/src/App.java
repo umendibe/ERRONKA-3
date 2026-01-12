@@ -2,8 +2,12 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Aplikazio nagusia (Main). Erabiltzaile interfazea (kontsola bidezkoa)
- * kudeatzen du eta Biltegia klasearekin komunikatzen da.
+ * Aplikazio nagusia (Main) eta Erabiltzaile Interfazea.
+ * <p>
+ * Klase honek kontsola bidezko menu sistema kudeatzen du eta
+ * {@link Biltegia} klasearekin komunikatzen da erabiltzailearen
+ * aginduak exekutatzeko.
+ * </p>
  */
 public class App {
     private static Biltegia biltegia = new Biltegia();
@@ -11,8 +15,7 @@ public class App {
 
     /**
      * Programaren sarrera puntua.
-     * 
-     * @param args Komando lerroko argumentuak.
+     * * @param args Komando lerroko argumentuak (ez dira erabiltzen).
      */
     public static void main(String[] args) {
         System.out.println("=========================================");
