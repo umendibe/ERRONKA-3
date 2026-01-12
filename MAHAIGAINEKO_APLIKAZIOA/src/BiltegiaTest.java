@@ -45,7 +45,7 @@ public class BiltegiaTest {
         boolean emaitza = biltegia.sartuStocka("5449000000100", "A1-1", 85);
         assertTrue(emaitza);
         assertTrue(outContent.toString().contains("'beteta' gisa markatuta dago"));
-        
+
         // Saiatu gehiago sartzen beteta dagoenean
         outContent.reset();
         boolean emaitza2 = biltegia.sartuStocka("5449000000100", "A1-1", 1); // Kapazitatea gainditzen du
@@ -72,7 +72,7 @@ public class BiltegiaTest {
         assertFalse(emaitza);
         assertTrue(outContent.toString().contains("Gelaxka 'beteta' gisa markatuta dago"));
     }
-    
+
     @Test
     void testSartuStocka_BalidazioOkerrak() {
         assertFalse(biltegia.sartuStocka("EAN_TXARRA", "A1-1", 10)); // EAN okerra
@@ -110,9 +110,10 @@ public class BiltegiaTest {
         // B2-4 gelaxkan beste produktu bat dago
         boolean emaitza = biltegia.ateraStocka("5449000000100", "B2-4", 1);
         assertFalse(emaitza);
-        assertFalse(outContent.toString().contains("Produktua ez dago gelaxka horretan")); // BalidatuGelaxkaProduktua-k ematen du mezua lehenago
+        assertFalse(outContent.toString().contains("Produktua ez dago gelaxka horretan")); // BalidatuGelaxkaProduktua-k
+                                                                                           // ematen du mezua lehenago
     }
-    
+
     @Test
     void testAteraStocka_ZeroKantitatea() {
         boolean emaitza = biltegia.ateraStocka("5449000000100", "A1-1", 0);
@@ -124,19 +125,23 @@ public class BiltegiaTest {
         // Lehenengo bete
         biltegia.sartuStocka("5449000000100", "A1-1", 85); // 100 total -> Beteta
         outContent.reset();
-        
+
         // Orain atera bat
         boolean emaitza = biltegia.ateraStocka("5449000000100", "A1-1", 1);
         assertTrue(emaitza);
         assertTrue(outContent.toString().contains("'beteta' egoeratik atera da"));
     }
-    
+
     @Test
     void testAteraStocka_LoopProduktuaEzAurkitu() throws Exception {
-        // Reflection erabiliz stocka manipulatu produktu bat ezabatzeko baina logikak bilatzen jarraitzeko
-        // Hau zaila da zuzenean lortzea `balidatuGelaxkaProduktua` deitzen delako lehenago.
-        // Baina `balidatu` pasatzen bada eta gero loop-ean aurkitzen ez bada (concurrency kasua teorikoa)
-        // Kasu honetan, `balidatuGelaxkaProduktua`-k babesten du metodoa, beraz estaldura hori
+        // Reflection erabiliz stocka manipulatu produktu bat ezabatzeko baina logikak
+        // bilatzen jarraitzeko
+        // Hau zaila da zuzenean lortzea `balidatuGelaxkaProduktua` deitzen delako
+        // lehenago.
+        // Baina `balidatu` pasatzen bada eta gero loop-ean aurkitzen ez bada
+        // (concurrency kasua teorikoa)
+        // Kasu honetan, `balidatuGelaxkaProduktua`-k babesten du metodoa, beraz
+        // estaldura hori
         // balidazio metodoaren testean lortzen da.
     }
 
@@ -148,7 +153,10 @@ public class BiltegiaTest {
         boolean emaitza = biltegia.mugituProduktua("5449000000100", "A1-1", "A1-2", 5);
         assertTrue(emaitza);
         assertEquals(10, biltegia.kontsultatuGelaxka("A1-1").get(0).getKantitatea());
-        assertEquals(15, biltegia.kontsultatuGelaxka("A1-2").get(0).getKantitatea()); // 15 zegoen beste produktu bat? Ez, begiratu setUp. A1-2an 111... dago. Berria gehituko da.
+        assertEquals(15, biltegia.kontsultatuGelaxka("A1-2").get(0).getKantitatea()); // 15 zegoen beste produktu bat?
+                                                                                      // Ez, begiratu setUp. A1-2an
+                                                                                      // 111... dago. Berria gehituko
+                                                                                      // da.
     }
 
     @Test
@@ -160,7 +168,7 @@ public class BiltegiaTest {
     void testMugituProduktua_HelmugaKapazitatea() {
         // A1-2 ia bete (90 sartu -> 105 total)
         biltegia.sartuStocka("1112223334445", "A1-2", 80); // 95 dauka
-        
+
         // Saiatu A1-1etik 10 mugitzen (95+10 > 100)
         boolean emaitza = biltegia.mugituProduktua("5449000000100", "A1-1", "A1-2", 10);
         assertFalse(emaitza);
@@ -169,25 +177,27 @@ public class BiltegiaTest {
 
     @Test
     void testMugituProduktua_Rollback() throws Exception {
-        // Eszenatokia: Mugitu nahi dugu, leku fisikoa badago (kalkulua ondo), 
-        // baina `sartuStocka`k huts egiten du (adibidez, gelaxka "beteta" zerrendan dagoelako eskuz).
-        
+        // Eszenatokia: Mugitu nahi dugu, leku fisikoa badago (kalkulua ondo),
+        // baina `sartuStocka`k huts egiten du (adibidez, gelaxka "beteta" zerrendan
+        // dagoelako eskuz).
+
         // 1. A1-2 "beteta" zerrendan sartu
         Field field = Biltegia.class.getDeclaredField("gelaxkaBetetaLista");
         field.setAccessible(true);
         List<String> lista = (List<String>) field.get(biltegia);
         lista.add("A1-2"); // A1-2 beteta markatu (nahiz eta 15 bakarrik izan)
 
-        // 2. Saiatu mugitzen A1-1etik A1-2ra (lekua badago teorian, baina sartuStocka-k zerrenda begiratzen du)
+        // 2. Saiatu mugitzen A1-1etik A1-2ra (lekua badago teorian, baina sartuStocka-k
+        // zerrenda begiratzen du)
         boolean emaitza = biltegia.mugituProduktua("5449000000100", "A1-1", "A1-2", 5);
-        
+
         assertFalse(emaitza);
         assertTrue(errContent.toString().contains("Jatorrizko kokalekua berreskuratzen"));
-        
+
         // Egiaztatu rollback-a ondo egin dela (A1-1en 15 jarraitu behar dute)
         assertEquals(15, biltegia.kontsultatuGelaxka("A1-1").get(0).getKantitatea());
     }
-    
+
     @Test
     void testMugituProduktua_AteraHuts() {
         // Saiatu mugitzen produktu bat ez dagoena
@@ -204,27 +214,28 @@ public class BiltegiaTest {
         try {
             Field field = Biltegia.class.getDeclaredField("stocka");
             field.setAccessible(true);
-            ((List)field.get(bHutsik)).clear();
-        } catch (Exception e) {}
-        
+            ((List) field.get(bHutsik)).clear();
+        } catch (Exception e) {
+        }
+
         bHutsik.erakutsiProduktuguztiakGelaxketan();
-        
+
         // Normala
         biltegia.erakutsiProduktuguztiakGelaxketan();
         assertTrue(outContent.toString().contains("A1-1"));
-        
+
         // Ezezaguna (Katalogoan ez dagoena)
         biltegia.stocka.add(new GelaxkaStock("X1-1", "0000000000000", 10));
         outContent.reset();
         biltegia.erakutsiProduktuguztiakGelaxketan();
         assertTrue(outContent.toString().contains("Ezezaguna"));
     }
-    
+
     @Test
     void testKontsultatuInbentarioa() {
         assertFalse(biltegia.kontsultatuInbentarioa().isEmpty());
     }
-    
+
     @Test
     void testBilatuProduktuaKatalogoan() {
         // EAN ez dena bilatzen
@@ -263,7 +274,7 @@ public class BiltegiaTest {
     void testBalidatuGelaxkaProduktua() {
         assertFalse(biltegia.balidatuGelaxkaProduktua("5449000000100", "B2-4")); // B2-4an beste produktu bat dago
         assertTrue(biltegia.balidatuGelaxkaProduktua("5449000000100", "A1-1"));
-        
+
         // GelaxkaID okerra pasata
         assertFalse(biltegia.balidatuGelaxkaProduktua("5449000000100", "ID_TXARRA"));
     }

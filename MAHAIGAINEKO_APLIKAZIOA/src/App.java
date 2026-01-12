@@ -11,6 +11,7 @@ public class App {
 
     /**
      * Programaren sarrera puntua.
+     * 
      * @param args Komando lerroko argumentuak.
      */
     public static void main(String[] args) {
@@ -63,7 +64,7 @@ public class App {
     }
 
     // ---------------------- 1. STOCKA KUDEATU FLUXUA ----------------------
-    
+
     /**
      * Stock-a kudeatzeko azpimenua (Sarrera/Irteera).
      */
@@ -165,7 +166,7 @@ public class App {
         if (!biltegia.balidatuKantitatea(kantitatea)) {
             System.out.println("Operazioa bertan behera geratu da.");
             return;
-        }else if (kantitatea == 0) {
+        } else if (kantitatea == 0) {
             System.out.println("Kantitatea 0 baino handiagoa izan behar da.");
             return;
         }
@@ -177,8 +178,9 @@ public class App {
         }
     }
 
-    // ---------------------- 2. BILTEGIAREN MUGIMENDUAK FLUXUA ----------------------
-    
+    // ---------------------- 2. BILTEGIAREN MUGIMENDUAK FLUXUA
+    // ----------------------
+
     /**
      * Mugimenduen azpimenua.
      */
@@ -255,8 +257,9 @@ public class App {
         }
     }
 
-    // ---------------------- 3. KONTSULTA ETA INFORMAZIO FLUXUA ----------------------
-    
+    // ---------------------- 3. KONTSULTA ETA INFORMAZIO FLUXUA
+    // ----------------------
+
     /**
      * Kontsulten azpimenua.
      */

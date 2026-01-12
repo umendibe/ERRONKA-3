@@ -40,13 +40,13 @@ public class AppTest {
         field.set(null, new Scanner(System.in));
 
         // Main exekutatu
-        App.main(new String[]{});
+        App.main(new String[] {});
 
         // Egiaztapenak
         String output = baos.toString();
         for (String expected : expectedOutputs) {
-            assertTrue(output.contains(expected), 
-                "Espero zen testua: '" + expected + "'\nEz da aurkitu irteeran.");
+            assertTrue(output.contains(expected),
+                    "Espero zen testua: '" + expected + "'\nEz da aurkitu irteeran.");
         }
     }
 
@@ -54,49 +54,52 @@ public class AppTest {
     void testMenuNagusia_Aukerak() throws Exception {
         // 1. Aukera okerra (99) -> 2. Letra (abc) -> 3. Irten (0)
         String input = "99\nabc\n0\n";
-        testAppExecution(input, 
-            "Aukera desegokia", 
-            "Zenbaki bat sartu behar duzu", 
-            "Aplikazioa ixten");
+        testAppExecution(input,
+                "Aukera desegokia",
+                "Zenbaki bat sartu behar duzu",
+                "Aplikazioa ixten");
     }
 
     @Test
     void testStockaSartu_FluxuZuzena() throws Exception {
         // 1 (Stocka) -> 1 (Sartu) -> EAN -> ID -> Kantitatea -> 0 (Irten)
         String input = "1\n1\n5449000000100\nA1-1\n10\n0\n";
-        testAppExecution(input, 
-            "Stocka arrakastaz sartu da");
+        testAppExecution(input,
+                "Stocka arrakastaz sartu da");
     }
 
     @Test
     void testStockaSartu_Erroreak() throws Exception {
         // Fluxua errorekin:
-        // 1 -> 1 
+        // 1 -> 1
         // -> EAN okerra (menura itzuli)
         // 1 -> 1 -> EAN ona -> ID okerra (menura itzuli)
-        // 1 -> 1 -> EAN ona -> ID ona -> Kantitatea letra (errorea) -> Kantitatea zenbakia baina balidazio okerra (menura)
+        // 1 -> 1 -> EAN ona -> ID ona -> Kantitatea letra (errorea) -> Kantitatea
+        // zenbakia baina balidazio okerra (menura)
         // 1 -> 1 -> EAN ona -> ID ona -> Kantitatea ona (sartu)
         // 0
-        
-        String input = 
-            // EAN okerra
-            "1\n1\nEAN_TXARRA\n" +
-            // ID okerra
-            "1\n1\n5449000000100\nID_TXARRA\n" +
-            // Kantitatea letra
-            "1\n1\n5449000000100\nA1-1\nabc\n" + // Hemen 'abc' irakurtzen saiatzen da, Scanner-ek garbitzen du, eta menura itzultzen da (return egiten duelako metodoak errorearekin)
-            // Kantitatea balio okerra (logic)
-            "1\n1\n5449000000100\nA1-1\n-5\n" +
-            // 0 (Irten)
-            "0\n";
-            
-        testAppExecution(input, 
-            "EAN-13 kodeak 13 digitu", 
-            "Gelaxka IDaren formatua okerra", 
-            "Kantitatea zenbaki bat izan behar da",
-            "Kantitatea 0 baino handiagoa");
+
+        String input =
+                // EAN okerra
+                "1\n1\nEAN_TXARRA\n" +
+                // ID okerra
+                        "1\n1\n5449000000100\nID_TXARRA\n" +
+                        // Kantitatea letra
+                        "1\n1\n5449000000100\nA1-1\nabc\n" + // Hemen 'abc' irakurtzen saiatzen da, Scanner-ek garbitzen
+                                                             // du, eta menura itzultzen da (return egiten duelako
+                                                             // metodoak errorearekin)
+                        // Kantitatea balio okerra (logic)
+                        "1\n1\n5449000000100\nA1-1\n-5\n" +
+                        // 0 (Irten)
+                        "0\n";
+
+        testAppExecution(input,
+                "EAN-13 kodeak 13 digitu",
+                "Gelaxka IDaren formatua okerra",
+                "Kantitatea zenbaki bat izan behar da",
+                "Kantitatea 0 baino handiagoa");
     }
-    
+
     @Test
     void testStockaSartu_KapazitateaGainditutaApp() throws Exception {
         // Biltegiak false itzultzen duenean
@@ -120,22 +123,21 @@ public class AppTest {
         // 1 -> 2 -> EAN -> ID -> Kantitatea letra
         // 1 -> 2 -> EAN -> ID -> Kantitatea negatiboa
         // 0
-        String input = 
-            "1\n2\nEAN_TXARRA\n" +
-            "1\n2\n5449000000100\nID_TXARRA\n" +
-            "1\n2\n5449000000100\nB2-4\n" + // B2-4an beste produktu bat dago
-            "1\n2\n5449000000100\nA1-1\nabc\n" +
-            "1\n2\n5449000000100\nA1-1\n-5\n" +
-            "0\n";
-            
-        testAppExecution(input, 
-            "Operazioa bertan behera geratu da.", 
-            "Operazioa bertan behera geratu da.", 
-            "Produktua ez dago gelaxka horretan", // BalidatuGelaxkaProduktua-k ematen du
-            "Errorea: Kantitatea zenbaki bat izan behar da.",
-            "Kantitatea 0 baino handiagoa izan behar da.");
+        String input = "1\n2\nEAN_TXARRA\n" +
+                "1\n2\n5449000000100\nID_TXARRA\n" +
+                "1\n2\n5449000000100\nB2-4\n" + // B2-4an beste produktu bat dago
+                "1\n2\n5449000000100\nA1-1\nabc\n" +
+                "1\n2\n5449000000100\nA1-1\n-5\n" +
+                "0\n";
+
+        testAppExecution(input,
+                "Operazioa bertan behera geratu da.",
+                "Operazioa bertan behera geratu da.",
+                "Produktua ez dago gelaxka horretan", // BalidatuGelaxkaProduktua-k ematen du
+                "Errorea: Kantitatea zenbaki bat izan behar da.",
+                "Kantitatea 0 baino handiagoa izan behar da.");
     }
-    
+
     @Test
     void testStockaAtera_BiltegiaFail() throws Exception {
         // Biltegiak false itzultzen du (adibidez nahikoa stock ez dagoenean)
@@ -146,19 +148,20 @@ public class AppTest {
 
     @Test
     void testKontsultak() throws Exception {
-        // 2 -> 1 (Gelaxka) -> ID -> 2 -> 2 (Inbentarioa) -> 2 -> 3 (Guztiak) -> 2 -> 4 (Inplementatu gabe) -> 0
-        String input = "2\n1\nA1-1\n" + 
-                       "2\n1\nZ9-9\n" + // Hutsik dagoen gelaxka
-                       "2\n2\n" + 
-                       "2\n3\n" + 
-                       "2\n4\n" + 
-                       "0\n";
-        testAppExecution(input, 
-            "Gelaxka A1-1 Edukia", 
-            "Gelaxka hutsa dago edo ez da aurkitu", 
-            "Inbentario Osoaren Txostena", 
-            "PRODUKTU GUZTIAK GELAXKETAN", 
-            "ez dago inplementatuta");
+        // 2 -> 1 (Gelaxka) -> ID -> 2 -> 2 (Inbentarioa) -> 2 -> 3 (Guztiak) -> 2 -> 4
+        // (Inplementatu gabe) -> 0
+        String input = "2\n1\nA1-1\n" +
+                "2\n1\nZ9-9\n" + // Hutsik dagoen gelaxka
+                "2\n2\n" +
+                "2\n3\n" +
+                "2\n4\n" +
+                "0\n";
+        testAppExecution(input,
+                "Gelaxka A1-1 Edukia",
+                "Gelaxka hutsa dago edo ez da aurkitu",
+                "Inbentario Osoaren Txostena",
+                "PRODUKTU GUZTIAK GELAXKETAN",
+                "ez dago inplementatuta");
     }
 
     @Test
@@ -167,7 +170,7 @@ public class AppTest {
         String input = "3\n1\n5449000000100\nA1-1\nA1-2\n5\n0\n";
         testAppExecution(input, "Mugimendua arrakastatsua");
     }
-    
+
     @Test
     void testMugimenduak_Erroreak() throws Exception {
         // 3 -> 1 -> EAN okerra
@@ -178,24 +181,23 @@ public class AppTest {
         // 3 -> 1 -> EAN -> Jat -> Hel -> Kantitatea negatiboa
         // 3 -> 2 (Transferitu inplementatu gabe)
         // 0
-        String input = 
-            "3\n1\nEAN_TXARRA\n" +
-            "3\n1\n5449000000100\nID_TXARRA\n" +
-            "3\n1\n5449000000100\nB2-4\n" +
-            "3\n1\n5449000000100\nA1-1\nID_TXARRA\n" +
-            "3\n1\n5449000000100\nA1-1\nA1-2\nabc\n" +
-            "3\n1\n5449000000100\nA1-1\nA1-2\n-5\n" +
-            "3\n2\n" + 
-            "0\n";
-            
-        testAppExecution(input, 
-            "EAN-13 kodeak", 
-            "Gelaxka IDaren formatua", 
-            "Operazioa bertan behera", 
-            "Kantitatea zenbaki bat",
-            "ez dago inplementatuta");
+        String input = "3\n1\nEAN_TXARRA\n" +
+                "3\n1\n5449000000100\nID_TXARRA\n" +
+                "3\n1\n5449000000100\nB2-4\n" +
+                "3\n1\n5449000000100\nA1-1\nID_TXARRA\n" +
+                "3\n1\n5449000000100\nA1-1\nA1-2\nabc\n" +
+                "3\n1\n5449000000100\nA1-1\nA1-2\n-5\n" +
+                "3\n2\n" +
+                "0\n";
+
+        testAppExecution(input,
+                "EAN-13 kodeak",
+                "Gelaxka IDaren formatua",
+                "Operazioa bertan behera",
+                "Kantitatea zenbaki bat",
+                "ez dago inplementatuta");
     }
-    
+
     @Test
     void testMugimenduak_BiltegiaFail() throws Exception {
         // Helmugako kapazitatea gainditzen duena

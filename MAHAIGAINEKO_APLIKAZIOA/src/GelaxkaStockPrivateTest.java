@@ -43,14 +43,14 @@ public class GelaxkaStockPrivateTest {
         Method m = GelaxkaStock.class.getDeclaredMethod("isValidGelaxkaID", String.class);
         m.setAccessible(true);
 
-        assertFalse((Boolean) m.invoke(null, "11-A"));        // digit-digit-dash-letter
-        assertFalse((Boolean) m.invoke(null, "A11"));         // missing dash
-        assertFalse((Boolean) m.invoke(null, "AA1-1"));       // double letter
-        assertFalse((Boolean) m.invoke(null, "1A-1"));        // digit-letter instead
-        assertFalse((Boolean) m.invoke(null, "A-1"));         // missing middle digits
-        assertFalse((Boolean) m.invoke(null, "A1-"));         // missing final digits
-        assertFalse((Boolean) m.invoke(null, "-1-1"));        // starts with dash
-        assertFalse((Boolean) m.invoke(null, "A1-1-1"));      // extra dash
+        assertFalse((Boolean) m.invoke(null, "11-A")); // digit-digit-dash-letter
+        assertFalse((Boolean) m.invoke(null, "A11")); // missing dash
+        assertFalse((Boolean) m.invoke(null, "AA1-1")); // double letter
+        assertFalse((Boolean) m.invoke(null, "1A-1")); // digit-letter instead
+        assertFalse((Boolean) m.invoke(null, "A-1")); // missing middle digits
+        assertFalse((Boolean) m.invoke(null, "A1-")); // missing final digits
+        assertFalse((Boolean) m.invoke(null, "-1-1")); // starts with dash
+        assertFalse((Boolean) m.invoke(null, "A1-1-1")); // extra dash
     }
 
     @Test
@@ -58,10 +58,10 @@ public class GelaxkaStockPrivateTest {
         Method m = GelaxkaStock.class.getDeclaredMethod("isValidGelaxkaID", String.class);
         m.setAccessible(true);
 
-        assertFalse((Boolean) m.invoke(null, "A1 1"));        // space instead of dash
-        assertFalse((Boolean) m.invoke(null, "A 1-1"));       // space after letter
-        assertFalse((Boolean) m.invoke(null, "A1-1 "));       // trailing space
-        assertFalse((Boolean) m.invoke(null, " A1-1"));       // leading space
+        assertFalse((Boolean) m.invoke(null, "A1 1")); // space instead of dash
+        assertFalse((Boolean) m.invoke(null, "A 1-1")); // space after letter
+        assertFalse((Boolean) m.invoke(null, "A1-1 ")); // trailing space
+        assertFalse((Boolean) m.invoke(null, " A1-1")); // leading space
     }
 
     @Test
@@ -88,7 +88,7 @@ public class GelaxkaStockPrivateTest {
         Method m = GelaxkaStock.class.getDeclaredMethod("isValidGelaxkaID", String.class);
         m.setAccessible(true);
 
-        assertFalse((Boolean) m.invoke(null, new Object[]{null}));
+        assertFalse((Boolean) m.invoke(null, new Object[] { null }));
     }
 
     @Test
@@ -123,4 +123,3 @@ public class GelaxkaStockPrivateTest {
         assertFalse((Boolean) m.invoke(null, "ABC1-1"));
     }
 }
-

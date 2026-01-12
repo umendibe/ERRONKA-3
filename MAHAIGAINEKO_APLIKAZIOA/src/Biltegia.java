@@ -37,7 +37,8 @@ public class Biltegia {
 
     /**
      * Stock berria sartzen du gelaxka batean.
-     * * @param ean13      Produktuaren EAN kodea.
+     * * @param ean13 Produktuaren EAN kodea.
+     * 
      * @param gelaxkaID  Helmugako gelaxka.
      * @param kantitatea Sartu beharreko kopurua.
      * @return true sarrera ondo egin bada, false bestela.
@@ -85,7 +86,8 @@ public class Biltegia {
 
     /**
      * Stocka ateratzen du gelaxka batetik.
-     * * @param ean13      Produktuaren EAN kodea.
+     * * @param ean13 Produktuaren EAN kodea.
+     * 
      * @param gelaxkaID  Jatorrizko gelaxka.
      * @param kantitatea Atera beharreko kopurua.
      * @return true irteera ondo egin bada, false bestela.
@@ -120,7 +122,8 @@ public class Biltegia {
 
     /**
      * Produktu kantitate bat gelaxka batetik bestera mugitzen du.
-     * * @param ean13               Produktuaren EAN kodea.
+     * * @param ean13 Produktuaren EAN kodea.
+     * 
      * @param jatorrizkoGelaxkaID Jatorrizko gelaxkaren IDa.
      * @param helmugaGelaxkaID    Helmugako gelaxkaren IDa.
      * @param kantitatea          Mugitu beharreko kopurua.
@@ -161,6 +164,7 @@ public class Biltegia {
     /**
      * Gelaxka baten edukia kontsultatzen du.
      * * @param gelaxkaID Kontsultatu nahi den gelaxka.
+     * 
      * @return Gelaxka horretan dauden stock elementuen zerrenda.
      */
     public List<GelaxkaStock> kontsultatuGelaxka(String gelaxkaID) {
@@ -175,6 +179,7 @@ public class Biltegia {
 
     /**
      * Inbentario osoa itzultzen du.
+     * 
      * @return Stock osoaren zerrenda.
      */
     public List<GelaxkaStock> kontsultatuInbentarioa() {
@@ -260,6 +265,7 @@ public class Biltegia {
     /**
      * EAN-13 kodea balioztatzen du (formatua eta katalogoan egotea).
      * * @param ean13 Egiaztatu beharreko EAN kodea.
+     * 
      * @return true baliozkoa bada, false bestela.
      */
     public boolean balidatuEAN13(String ean13) {
@@ -289,6 +295,7 @@ public class Biltegia {
     /**
      * Gelaxka IDaren formatua balioztatzen du.
      * * @param gelaxkaID Egiaztatu beharreko gelaxka IDa.
+     * 
      * @return true formatua zuzena bada, false bestela.
      */
     public boolean balidatuGelaxkaID(String gelaxkaID) {
@@ -309,6 +316,7 @@ public class Biltegia {
     /**
      * Kantitatea baliozkoa den egiaztatzen du (0 < k <= 1000).
      * * @param kantitatea Egiaztatu beharreko kantitatea.
+     * 
      * @return true baliozkoa bada, false bestela.
      */
     public boolean balidatuKantitatea(int kantitatea) {
@@ -327,7 +335,8 @@ public class Biltegia {
 
     /**
      * Produktu bat gelaxka zehatz batean existitzen den egiaztatzen du.
-     * * @param ean13     Produktuaren kodea.
+     * * @param ean13 Produktuaren kodea.
+     * 
      * @param gelaxkaID Gelaxkaren IDa.
      * @return true produktua gelaxka horretan badago, false bestela.
      */

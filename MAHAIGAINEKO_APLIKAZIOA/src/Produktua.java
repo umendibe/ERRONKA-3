@@ -19,22 +19,31 @@ public class Produktua {
 
     /**
      * Produktuaren EAN-13 kodea itzultzen du.
+     * 
      * @return EAN-13 kodea.
      */
-    public String getEan13() { return ean13; }
+    public String getEan13() {
+        return ean13;
+    }
 
     /**
      * Produktuaren izena itzultzen du.
+     * 
      * @return Izena.
      */
-    public String getIzena() { return izena; }
+    public String getIzena() {
+        return izena;
+    }
 
     /**
      * Produktuaren kategoria itzultzen du.
+     * 
      * @return Kategoria.
      */
-    public String getKategoria() { return kategoria; }
-    
+    public String getKategoria() {
+        return kategoria;
+    }
+
     @Override
     public String toString() {
         return "[" + ean13 + "] " + izena + " (" + kategoria + ")";

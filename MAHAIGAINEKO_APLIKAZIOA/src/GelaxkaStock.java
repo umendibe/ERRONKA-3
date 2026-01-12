@@ -12,7 +12,8 @@ public class GelaxkaStock {
 
     /**
      * GelaxkaStock objektua sortzen du.
-     * * @param gelaxkaID     Gelaxkaren IDa (Formatua: LetraLarriaZenbakia-Zenbakia).
+     * * @param gelaxkaID Gelaxkaren IDa (Formatua: LetraLarriaZenbakia-Zenbakia).
+     * 
      * @param produktuEAN13 Produktuaren EAN kodea.
      * @param kantitatea    Produktu kopurua.
      * @throws IllegalArgumentException Gelaxka IDak formatu okerra badu.
@@ -45,6 +46,7 @@ public class GelaxkaStock {
     /**
      * Gelaxka IDaren formatua balioztatzen du.
      * * @param id Egiaztatu beharreko IDa.
+     * 
      * @return true formatua zuzena bada, false bestela.
      */
     private static boolean isValidGelaxkaID(String id) {
