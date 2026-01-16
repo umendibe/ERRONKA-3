@@ -148,20 +148,27 @@ public class AppTest {
 
     @Test
     void testKontsultak() throws Exception {
-        // 2 -> 1 (Gelaxka) -> ID -> 2 -> 2 (Inbentarioa) -> 2 -> 3 (Guztiak) -> 2 -> 4
-        // (Inplementatu gabe) -> 0
+        // 2 -> 1 (Gelaxka) -> ID -> 
+        // 2 -> 1 (Gelaxka) -> Hutsik -> 
+        // 2 -> 2 (Inbentarioa) -> 
+        // 2 -> 3 (Guztiak) -> 
+        // 2 -> 4 (Produktua EAN) -> EAN KODEA SARTU BEHAR DA -> 
+        // 0 (Irten)
+        
         String input = "2\n1\nA1-1\n" +
-                "2\n1\nZ9-9\n" + // Hutsik dagoen gelaxka
+                "2\n1\nZ9-9\n" + 
                 "2\n2\n" +
                 "2\n3\n" +
                 "2\n4\n" +
+                "5449000000100\n" +
                 "0\n";
+
         testAppExecution(input,
                 "Gelaxka A1-1 Edukia",
                 "Gelaxka hutsa dago edo ez da aurkitu",
                 "Inbentario Osoaren Txostena",
                 "PRODUKTU GUZTIAK GELAXKETAN",
-                "ez dago inplementatuta");
+                "Produktuaren izena: Kamiseta Zubieta");
     }
 
     @Test
