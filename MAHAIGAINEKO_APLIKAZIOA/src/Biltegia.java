@@ -9,7 +9,7 @@ import java.util.List;
  * </p>
  */
 public class Biltegia {
-    private List<Produktua> produktuKatalogoa;
+    protected  List<Produktua> produktuKatalogoa;
 
     /**
      * Biltegian dauden gelaxken stock zerrenda. Protected da testetarako sarbidea
@@ -267,7 +267,7 @@ public class Biltegia {
         System.out.println("========================================\n");
     }
 
-    private Produktua billatuProduktua(String ean13) {
+    public Produktua billatuProduktua(String ean13) {
         for (Produktua prod : produktuKatalogoa) {
             if (prod.getEan13().equals(ean13)) {
                 return prod;

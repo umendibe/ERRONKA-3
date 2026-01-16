@@ -271,7 +271,7 @@ public class App {
         System.out.println("1. Gelaxkaren Kontsulta");
         System.out.println("2. Inbentario Osoa");
         System.out.println("3. Produktu Guztiak Gelaxketan");
-        System.out.println("4. Produktuaren Kontsulta (EAN-13 edo kategoriaren arabera)");
+        System.out.println("4. Produktuaren Kontsulta (EAN-13 bidez)");
         System.out.print("Aukeratu Kontsulta Mota:");
 
         int aukera = scanner.nextInt();
@@ -285,7 +285,16 @@ public class App {
             biltegia.erakutsiProduktuguztiakGelaxketan();
         } else if (aukera == 4) {
             System.out.println(
-                    "Produktuaren kontsulta (EAN-13 edo kategoriaren arabera) ez dago inplementatuta oraindik.");
+                    "Sartu produktuaren EAN-13 kodea:");
+            String ean13 = scanner.nextLine().trim();
+            biltegia.billatuProduktua(ean13);
+            for (Produktua prod : biltegia.produktuKatalogoa) {
+                if (prod.getEan13().equals(ean13)) {
+                    System.out.println("Produktuaren izena: " + prod.getIzena());
+                    System.out.println("Produktuaren kategoria: " + prod.getKategoria());
+                    return;
+                }
+            }
         }
     }
 
